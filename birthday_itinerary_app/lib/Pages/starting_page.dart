@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../Authentication/google_signin.dart';
 
 class StartingPageContent extends StatelessWidget {
   @override
@@ -12,7 +15,7 @@ class StartingPageContent extends StatelessWidget {
               width: 375,
               height: 812,
               clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(color: Color(0xFFA1DEFB)),
+              decoration: const BoxDecoration(color: Color(0xFFA1DEFB)),
               child: Stack(
                 children: [
                   Positioned(
@@ -22,7 +25,7 @@ class StartingPageContent extends StatelessWidget {
                       width: 638,
                       height: 676,
                       //big circle
-                      decoration: ShapeDecoration(
+                      decoration: const ShapeDecoration(
                         color: Color(0xFFD7EFFB),
                         shape: OvalBorder(),
                       ),
@@ -36,7 +39,7 @@ class StartingPageContent extends StatelessWidget {
                       height: 401,
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             left: 2,
                             top: 85,
                             child: Text(
@@ -49,7 +52,7 @@ class StartingPageContent extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 0,
                             top: 25,
                             child: Text(
@@ -62,7 +65,7 @@ class StartingPageContent extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 0,
                             top: 0,
                             child: Text(
@@ -75,7 +78,7 @@ class StartingPageContent extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 5,
                             top: 140,
                             child: SizedBox(
@@ -95,8 +98,8 @@ class StartingPageContent extends StatelessWidget {
                             left: 2,
                             top: 351,
                             child: ElevatedButton(
-                              onPressed: () {
-                                //Code for action here
+                              onPressed: () async {
+                                // Code for Sign in
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.transparent,
@@ -110,7 +113,7 @@ class StartingPageContent extends StatelessWidget {
                                 width: 156,
                                 height: 50,
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                     begin: Alignment(-0.98, -0.22),
                                     end: Alignment(0.98, 0.22),
                                     colors: [
@@ -120,7 +123,7 @@ class StartingPageContent extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'SIGN UP',
                                     style: TextStyle(
@@ -145,9 +148,9 @@ class StartingPageContent extends StatelessWidget {
                       width: 249,
                       height: 243,
                       //top right most corner circle
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [Color(0xCCD7EFFB), Color(0x00D7EFFB)],
@@ -170,9 +173,9 @@ class StartingPageContent extends StatelessWidget {
                       width: 249,
                       height: 243,
                       //bottom big circle
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.bottomCenter, //Alignment.topCenter
                           end: Alignment.topLeft, //Alignment.bottomCenter
                           colors: [Color(0xCCD7EFFB), Color(0x00D7EFFB)],
@@ -194,9 +197,9 @@ class StartingPageContent extends StatelessWidget {
                     child: Container(
                       width: 127,
                       height: 124,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.bottomCenter, //Alignment.topCenter
                           end: Alignment.topLeft, //Alignment.bottomCenter
                           colors: [Color(0xCCD7EFFB), Color(0x00D7EFFB)],
@@ -219,9 +222,9 @@ class StartingPageContent extends StatelessWidget {
                       width: 127,
                       height: 124,
                       //top circle 1
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [Color(0xCCD7EFFB), Color(0x00D7EFFB)],

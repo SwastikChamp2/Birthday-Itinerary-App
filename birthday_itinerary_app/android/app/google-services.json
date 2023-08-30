@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "252150316079",
+    "project_id": "birthday-itinerary-app",
+    "storage_bucket": "birthday-itinerary-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252150316079:android:17452d55ba6a2136731ada",
+        "android_client_info": {
+          "package_name": "com.example.birthday_itinerary_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252150316079-fvggdgd3v5vo41fg377p4fdqp2sou6fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHPT8nuVGAWJZtCo73AOTFSYVMH6vdoJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252150316079-fvggdgd3v5vo41fg377p4fdqp2sou6fp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "252150316079-45aepiac8k76vkc64412cp3nfvc2hosf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.birthdayItineraryApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

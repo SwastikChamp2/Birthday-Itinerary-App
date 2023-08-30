@@ -1,10 +1,13 @@
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Pages/starting_page.dart';
 
-void main() {
-  runApp(const BirthdayApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(BirthdayApp());
 }
 
 class BirthdayApp extends StatelessWidget {
@@ -17,7 +20,7 @@ class BirthdayApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: StartingPageContent(),
     );
   }
 }
