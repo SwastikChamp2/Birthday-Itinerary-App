@@ -1,5 +1,6 @@
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
+import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
-
 import 'Pages/starting_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class BirthdayApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
       ),
       debugShowCheckedModeBanner: false,
-      home: StartingPageContent(),
+      home: HomePage(),
     );
   }
 }
