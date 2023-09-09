@@ -1,5 +1,9 @@
 import 'package:birthday_itinerary_app/Components/birthday_itinerary_card_homepage.dart';
+import 'package:birthday_itinerary_app/Components/general_components.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import '../Authentication/google_signin.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -33,23 +37,23 @@ class FixedTopBarforHome extends StatelessWidget {
         bottom: 31,
       ),
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(color: Color(0xFFF1FAFF)),
-      child: Row(
+      decoration: const BoxDecoration(color: Color(0xFFF1FAFF)),
+      child: const Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          IconButton(
-            onPressed: () {
-              // Handle button click (e.g., navigate back)
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              color: Color(0xFF5E6980),
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: 14),
+          // IconButton(
+          //   onPressed: () {
+          //     // Handle button click (e.g., navigate back)
+          //   },
+          //   icon: Icon(
+          //     Icons.arrow_back,
+          //     color: Color(0xFF5E6980),
+          //     size: 24,
+          //   ),
+          // ),
+          SizedBox(width: 20),
           Expanded(
             child: Text(
               'Choose a birthday itinerary',
@@ -68,6 +72,9 @@ class FixedTopBarforHome extends StatelessWidget {
 }
 
 class HomePageContent extends StatelessWidget {
+  GoogleSignInAccount? _user;
+
+  GoogleSignInAccount get user => _user!;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -77,7 +84,7 @@ class HomePageContent extends StatelessWidget {
         // width: 341,
         // height: 1151,
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Column(
           children: [
             BirthdayItineraryCard(
@@ -120,75 +127,13 @@ class HomePageContent extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class FixedBottomBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      top: 739,
-      child: Container(
-        width: 375,
-        height: 45,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 375,
-                height: 73,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x14000000),
-                      blurRadius: 14,
-                      offset: Offset(0, -2),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 50,
-              top: 10,
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/home page button selected.png', // Replace with your image path
-                      width: 30,
-                      height: 30,
-                      // You can add more styling properties as needed
-                    ),
-                    const SizedBox(width: 80),
-                    Image.asset(
-                      'assets/explore page button.png', // Replace with your image path
-                      width: 30,
-                      height: 30,
-                      // You can add more styling properties as needed
-                    ),
-                    const SizedBox(width: 80),
-                    Image.asset(
-                      'assets/itinerary page button.png', // Replace with your image path
-                      width: 30,
-                      height: 30,
-                      // You can add more styling properties as needed
-                    ),
-                  ],
-                ),
-              ),
+            ElevatedButton(
+              onPressed: () {
+                final provider =
+                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.googleLogout(); // Log out
+              },
+              child: const Text("Log Out"),
             ),
           ],
         ),
