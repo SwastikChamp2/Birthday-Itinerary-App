@@ -1,3 +1,5 @@
+import 'package:birthday_itinerary_app/Pages/explore_page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class FixedBottomBar extends StatelessWidget {
@@ -41,7 +43,10 @@ class FixedBottomBar extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        // Navigation route to home page button
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
                       },
                       child: Image.asset(
                         'assets/home page button selected.png',
@@ -52,7 +57,7 @@ class FixedBottomBar extends StatelessWidget {
                     const SizedBox(width: 80),
                     GestureDetector(
                       onTap: () {
-                        // Navigation route to explore page
+                        // Navigation route to HomePage
                       },
                       child: Image.asset(
                         'assets/explore page button.png',
