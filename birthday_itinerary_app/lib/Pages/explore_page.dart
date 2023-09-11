@@ -1,6 +1,4 @@
-import 'package:birthday_itinerary_app/Components/birthday_itinerary_card_homepage.dart';
 import 'package:flutter/material.dart';
-
 import '../Components/general_components.dart';
 
 class ExplorePage extends StatefulWidget {
@@ -37,7 +35,11 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
           // Add the Horizontal Scrollable Row
           HorizontalImageRow(changeCoverImage),
-          ExplorePageEventTitleText(),
+          CustomTitleText(
+            itineraryTitle: 'Culinary Delight Fiesta',
+            itineraryPricePerPerson: 45,
+            itineraryLocation: 'Napa Valley, California',
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: ExplorePageContent(),
@@ -45,90 +47,6 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
           FixedBottomBar(),
         ],
-      ),
-    );
-  }
-}
-
-class HorizontalImageRow extends StatelessWidget {
-  final Function(String) onImageTap;
-
-  HorizontalImageRow(this.onImageTap);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.88,
-      color: Color(0xFFF0F7FF),
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          // Use HorizontalImage for each image
-          HorizontalImage(
-            imageUrl:
-                'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg',
-            onTap: () => onImageTap(
-                'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA=',
-            onTap: () => onImageTap(
-                'https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA='),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://imgmedia.lbb.in/media/2019/08/5d43d83bca10992d055cc50d_1564727355126.jpg',
-            onTap: () => onImageTap(
-                'https://imgmedia.lbb.in/media/2019/08/5d43d83bca10992d055cc50d_1564727355126.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://fesmag.com/images/stories/2022-02/MS_sunsetroom.jpg',
-            onTap: () => onImageTap(
-                'https://fesmag.com/images/stories/2022-02/MS_sunsetroom.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://img.freepik.com/premium-photo/delicious-food-fine-dining-restaurant-ultra-realistic-generative-ai_751108-3797.jpg?w=2000',
-            onTap: () => onImageTap(
-                'https://img.freepik.com/premium-photo/delicious-food-fine-dining-restaurant-ultra-realistic-generative-ai_751108-3797.jpg?w=2000'),
-          ),
-          // Add more HorizontalImage widgets as needed
-        ],
-      ),
-    );
-  }
-}
-
-class HorizontalImage extends StatelessWidget {
-  final String imageUrl;
-  final Function onTap;
-
-  HorizontalImage({
-    required this.imageUrl,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        onTap();
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          width: 60.05,
-          height: 55.88,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: NetworkImage(imageUrl),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
       ),
     );
   }
@@ -214,89 +132,10 @@ class ExplorePageContent extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              BirthdayItineraryCard(
-                title: 'Pamper & Paint Retreat',
-                price: '\$70',
-                rating: '4.6',
-                imageUrl:
-                    'https://img.etimg.com/thumb/msid-62296874,width-650,height-488,imgsize-221288,,resizemode-75/.jpg',
-              ),
-              const SizedBox(
-                height: 25,
-              ),
               EventDetails(),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ExplorePageEventTitleText extends StatelessWidget {
-  const ExplorePageEventTitleText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: 16.0, vertical: 16.0), // Adjust padding as needed
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // Column 1
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Culinary Delight Fiesta',
-                style: TextStyle(
-                  color: Color(0xFF5E6980),
-                  fontSize: 18.57,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(
-                  height: 4.0), // Add some space between the two Text widgets
-              Text(
-                'Napa Valley, California',
-                style: TextStyle(
-                  color: Color(0x7F425884),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-          // Column 2
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                '\$45',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: Color(0xFF5E6980),
-                  fontSize: 20,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(
-                'Per person',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: Color(0x7F425884),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
@@ -308,145 +147,56 @@ class EventDetails extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          IndividualEventDetail(),
+          CustomEventDetailCard(
+            individualEventTitle: 'Welcome Breakfast',
+            individualEventDate: '9:00 AM - 11:00 AM',
+            individualEventLocation: 'The Garden Terrace Cafe',
+            individualEventDescription:
+                'Indulge in a gourmet morning spread in the Garden Terrace.',
+            isIndividualEventActive: false,
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Welcome Lunch',
+            individualEventDate: '12:00 PM - 01:30 PM',
+            individualEventLocation: 'The Garden Terrace Restuarant',
+            individualEventDescription:
+                'Indulge in Lunch at the Garden Terrace.',
+            isIndividualEventActive: false,
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Gourmet Pizza Lunch',
+            individualEventDate: '12:00 PM - 01:30 PM',
+            individualEventLocation: 'The Artisan Kitchen',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Savour personalized pizzas in the vibrant Artisan Kitchen.',
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Cupcake Decorating Extravaganza',
+            individualEventDate: '2:00 PM - 3:00 PM',
+            individualEventLocation: 'The Dessert Haven',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Get creative with cupcake decorations in the sunlit conservatory of Desert Heaven',
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Taste-Testing and Foodie Games',
+            individualEventDate: '3:30 PM - 6:30 PM',
+            individualEventLocation: 'The Tasting Lounge Bar and Cafe',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Engage in fun-filled food-related games in the cozy lounge area of Harmonyville Estate.',
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Grand Dinner Feast',
+            individualEventDate: '7:00 PM - 9:30 PM',
+            individualEventLocation: 'The Grand Indian Hotel',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Conclude the day with an exquisite dinner in the grand dining hall',
+          ),
         ],
       ),
-    );
-  }
-}
-
-class IndividualEventDetail extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topLeft,
-      children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 10.0), // Add 10-pixel left padding
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  width: 6.0,
-                  color: Color(0xCCC3DEFA),
-                ),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left:
-                      14.0), // Adjust left padding to maintain the same content position
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 273,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Welcome Breakfast',
-                          style: TextStyle(
-                            color: Color(0xFF757575),
-                            fontSize: 16,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ), // Add spacing between title and description
-                        Container(
-                          width: 300,
-                          child: Text(
-                            'Indulge in a gourmet morning spread in the Garden Terrace.',
-                            style: TextStyle(
-                              color: Color(0xFF425884),
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 16.0,
-                        ), // Add spacing between description and location/time
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/location pin blue icon.png',
-                              width: 16,
-                              height: 19,
-                            ),
-                            SizedBox(
-                              width: 8.0,
-                            ), // Add spacing between location icon and text
-                            Container(
-                              width: 208,
-                              child: Text(
-                                'The Garden Terrace Café',
-                                style: TextStyle(
-                                  color: Color(0xFF757575),
-                                  fontSize: 14,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                            height:
-                                8.0), // Add spacing between location and time
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/clock blue icon.png',
-                              width: 16,
-                              height: 16,
-                            ),
-                            SizedBox(
-                              width: 8.0,
-                            ), // Add spacing between clock icon and text
-                            Text(
-                              '9:00 AM - 11:00 AM',
-                              style: TextStyle(
-                                color: Color(0xFF757575),
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                  // Add spacing between event detail cards
-                ],
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          left: 4,
-          top: 0,
-          child: Container(
-            width: 20,
-            height: 20,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color.fromARGB(255, 238, 239, 241),
-              border: Border.all(
-                color: const Color.fromARGB(255, 18, 124, 232),
-                width: 5.0,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
