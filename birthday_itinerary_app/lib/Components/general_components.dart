@@ -1,4 +1,4 @@
-import 'package:birthday_itinerary_app/Pages/explore_page.dart';
+import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -397,6 +397,319 @@ class CustomTitleText extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ExplorePagePopularCard extends StatelessWidget {
+  final String title;
+  final String location;
+  final double rating;
+  final String imageUrl;
+
+  ExplorePagePopularCard({
+    required this.title,
+    required this.location,
+    required this.rating,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.white,
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Container(
+        width: 233,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 200,
+              height: 140,
+              decoration: BoxDecoration(
+                color: Color(0xFFC4C4C4),
+                borderRadius: BorderRadius.circular(16),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+                right: 10,
+                left: 20,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 150,
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            color: Color(0xFF5E6980),
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: 42,
+                            height: 18,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 42,
+                                    height: 18,
+                                    decoration: ShapeDecoration(
+                                      color: Color(0xFF5E6980),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(47.62),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 18,
+                                  top: 3,
+                                  child: SizedBox(
+                                    width: 15.75,
+                                    height: 14.70,
+                                    child: Text(
+                                      rating.toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 9.52,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        height: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 7,
+                                  top: 4,
+                                  child: Image.asset(
+                                    'assets/star.png',
+                                    height: 8,
+                                    width: 8,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    location,
+                    style: TextStyle(
+                      color: Color(0xFF5E6980),
+                      fontSize: 10,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExplorePageButton extends StatelessWidget {
+  final String text;
+  final String style;
+  final VoidCallback onPressed;
+
+  const ExplorePageButton({
+    Key? key,
+    required this.text,
+    required this.style,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    BoxDecoration decoration;
+    Color textColor;
+    if (style == 'Gradient') {
+      decoration = BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(-0.98, -0.22),
+          end: Alignment(0.98, 0.22),
+          colors: [Color(0xFF8BD8F9), Color(0xFF5395FF)],
+        ),
+        borderRadius: BorderRadius.circular(50),
+      );
+      textColor = Colors.white;
+    } else if (style == 'Grey') {
+      decoration = BoxDecoration(
+        color: Color(0xFFE9ECEF),
+        borderRadius: BorderRadius.circular(50),
+      );
+      textColor = Color(0xFF5E6980);
+    } else {
+      // Handle other styles or fallback to a default style
+      decoration = BoxDecoration(
+        color: Colors.grey, // You can set a default style here
+        borderRadius: BorderRadius.circular(50),
+      );
+      textColor = Colors.black; // You can set a default text color here
+    }
+
+    return Ink(
+      width: 100,
+      height: 23,
+      decoration: decoration,
+      child: InkWell(
+        splashColor: Color.fromRGBO(255, 255, 255, 0.5),
+        onTap: onPressed,
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: textColor,
+              fontSize: 12,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SearchField extends StatefulWidget {
+  const SearchField({super.key});
+
+  @override
+  State<SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<SearchField> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 331,
+      height: 47,
+      decoration: BoxDecoration(
+        color: Color(0xFFD1DFE0),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  hintStyle: TextStyle(
+                    color: Color(0xFF5E6A81),
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.search,
+              color: Color(0xFF5E6A81),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExploreCategoryCard extends StatelessWidget {
+  final String imageUrl;
+  final String labelText;
+
+  ExploreCategoryCard({
+    required this.imageUrl,
+    required this.labelText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      shadowColor: Colors.grey.shade300,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      color: Colors.white,
+      child: SizedBox(
+        width: 331,
+        height: 70,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 56,
+              height: 56,
+              decoration: BoxDecoration(
+                color: Color(0xFFC4C4C4),
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+            Text(
+              labelText,
+              style: TextStyle(
+                color: Color(0xFF757575),
+                fontSize: 18,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(width: 10),
+            IconButton(
+              icon: Icon(Icons.chevron_right_outlined),
+              iconSize: 50,
+              color: Color.fromARGB(255, 97, 95, 95),
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     );
   }

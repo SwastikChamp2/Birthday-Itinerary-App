@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
-class ExplorePage extends StatefulWidget {
+class ItineraryDetailPage extends StatefulWidget {
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
 
-class _ExplorePageState extends State<ExplorePage> {
+class _ExplorePageState extends State<ItineraryDetailPage> {
   String coverImageUrl =
       'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg';
 

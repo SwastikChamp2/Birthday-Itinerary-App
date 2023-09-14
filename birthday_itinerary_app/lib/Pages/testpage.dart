@@ -399,3 +399,133 @@ class Homepage extends StatelessWidget {
     );
   }
 }
+
+// Positioned(
+//       left: 17,
+//       top: 101,
+//       child: Container(
+//         // width: 341,
+//         // height: 1151,
+//         clipBehavior: Clip.antiAlias,
+//         decoration: const BoxDecoration(),
+//         child: Column(
+//           children: [
+//             Container(
+//               width: 331,
+//               height: 47,
+//               decoration: BoxDecoration(
+//                 color: Color(0xFFD1DFE0),
+//                 borderRadius: BorderRadius.circular(25),
+//               ),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 16),
+//                 child: Row(
+//                   children: [
+//                     Expanded(
+//                       child: TextField(
+//                         decoration: InputDecoration(
+//                           hintText: "Search",
+//                           hintStyle: TextStyle(
+//                             color: Color(0xFF5E6A81),
+//                           ),
+//                           border: InputBorder.none,
+//                         ),
+//                       ),
+//                     ),
+//                     Icon(
+//                       Icons.search,
+//                       color: Color(0xFF5E6A81),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             SizedBox(height: 20),
+//             Padding(
+//               padding: const EdgeInsets.symmetric(
+//                 vertical: 8.0,
+//                 horizontal: 20,
+//               ),
+//               child: Row(
+//                 children: [
+//                   ExplorePageGradientButton(
+//                       text: 'Restuarant', onPressed: () {}),
+//                   SizedBox(
+//                     width: 10,
+//                   ),
+//                   ExplorePageGreyButton(text: 'Hotels', onPressed: () {}),
+//                   SizedBox(
+//                     width: 10,
+//                   ),
+//                   ExplorePageGreyButton(text: 'Events', onPressed: () {}),
+//                 ],
+//               ),
+//             ),
+//             SizedBox(height: 20),
+//             SingleChildScrollView(
+//               scrollDirection: Axis.horizontal,
+//               child: Row(
+//                 children: [
+//                   ExplorePagePopularCard(
+//                     title: "Morning Summer Camp",
+//                     location: "Ocean Avenue, Santa Monica",
+//                     rating: 4.6,
+//                     imageUrl:
+//                         "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f4/5f/42/f45f42aa-ac67-4e07-899f-76a465681982/artwork.jpg/1200x1200bf-60.jpg",
+//                   ),
+//                   ExplorePagePopularCard(
+//                     title: "Morning Summer Camp",
+//                     location: "Ocean Avenue, Santa Monica",
+//                     rating: 4.6,
+//                     imageUrl:
+//                         "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f4/5f/42/f45f42aa-ac67-4e07-899f-76a465681982/artwork.jpg/1200x1200bf-60.jpg",
+//                   ),
+//                   ExplorePagePopularCard(
+//                     title: "Morning Summer Camp",
+//                     location: "Ocean Avenue, Santa Monica",
+//                     rating: 4.6,
+//                     imageUrl:
+//                         "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f4/5f/42/f45f42aa-ac67-4e07-899f-76a465681982/artwork.jpg/1200x1200bf-60.jpg",
+//                   ),
+//                   ExplorePagePopularCard(
+//                     title: "Morning Summer Camp",
+//                     location: "Ocean Avenue, Santa Monica",
+//                     rating: 4.6,
+//                     imageUrl:
+//                         "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f4/5f/42/f45f42aa-ac67-4e07-899f-76a465681982/artwork.jpg/1200x1200bf-60.jpg",
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             const SizedBox(height: 20),
+//             Padding(
+//               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+//               child: Align(
+//                 alignment: Alignment.centerLeft,
+//                 child: Text(
+//                   'Categories',
+//                   style: TextStyle(
+//                     color: Color(0xFF5E6980),
+//                     fontSize: 18,
+//                     fontFamily: 'Mulish',
+//                     fontWeight: FontWeight.w700,
+//                     height: 0,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             const SizedBox(
+//               height: 25,
+//             ),
+//             ElevatedButton(
+//               onPressed: () {
+//                 final provider =
+//                     Provider.of<GoogleSignInProvider>(context, listen: false);
+//                 provider.googleLogout(); // Log out
+//               },
+//               child: const Text("Log Out"),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );

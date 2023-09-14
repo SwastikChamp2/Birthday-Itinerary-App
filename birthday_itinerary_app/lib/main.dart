@@ -1,5 +1,6 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
-import 'package:birthday_itinerary_app/Pages/explore_page.dart';
+import 'package:birthday_itinerary_app/Pages/explore__page.dart';
+import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:firebase_core/firebase_core.dart';
