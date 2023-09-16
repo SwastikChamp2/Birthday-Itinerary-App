@@ -1,4 +1,5 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
+import 'package:birthday_itinerary_app/Pages/event_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,7 @@ class EventTabSection extends StatelessWidget {
                   title: "Mountain Top Skiing",
                   location: "Aspen, Colorado",
                   rating: 4.6,
-                  onTapRoute: TestScaffold(),
+                  onTapRoute: EventListPage(),
                   imageUrl:
                       "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB",
                 ),
@@ -34,14 +35,14 @@ class EventTabSection extends StatelessWidget {
                   title: "California Beach Scuba Diving",
                   location: "Morro Bay, California",
                   rating: 4.6,
-                  onTapRoute: TestScaffold(),
+                  onTapRoute: EventListPage(),
                   imageUrl:
                       "https://www.innsofmonterey.com/resourcefiles/blogsmallimages/scuba-diving-adventures-in-the-monterey-bay-national-marine-sanctuary.jpg",
                 ),
                 ExplorePagePopularCard(
                   title: "Jackson Hole Paragliding",
                   location: "Jackson Hole, Wyoming",
-                  onTapRoute: TestScaffold(),
+                  onTapRoute: EventListPage(),
                   rating: 4.6,
                   imageUrl:
                       "http://jacksonhole-traveler-production.s3.amazonaws.com/wp-content/uploads/2014/05/11113830/Jackson-Hole-Paragliding-1920x1281.jpg",
@@ -49,7 +50,7 @@ class EventTabSection extends StatelessWidget {
                 ExplorePagePopularCard(
                   title: "Bungee Jumping in Mt. St. Helens",
                   location: "Mt. St. Helens, Washington",
-                  onTapRoute: TestScaffold(),
+                  onTapRoute: EventListPage(),
                   rating: 4.5,
                   imageUrl:
                       "https://www.jumpinheights.com/assets/images/gallery/bungy/04.jpg",
@@ -83,7 +84,7 @@ class EventTabSection extends StatelessWidget {
                 imageUrl:
                     "https://i.natgeofe.com/n/3ea82492-db0c-4b58-9bf9-247dab302e22/bir-billing-paragliding-adventure-sports-india_square.jpg",
                 labelText: 'Adventure activities',
-                onTapRoute: TestScaffold(),
+                onTapRoute: EventListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -92,7 +93,7 @@ class EventTabSection extends StatelessWidget {
                 imageUrl:
                     "https://tourscanner.com/blog/wp-content/uploads/2017/10/Featured-image.jpg",
                 labelText: 'Water Activities',
-                onTapRoute: TestScaffold(),
+                onTapRoute: EventListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -101,7 +102,7 @@ class EventTabSection extends StatelessWidget {
                 imageUrl:
                     "https://boombarstick.com/wp-content/uploads/2020/11/Music-Festivals-1024x682.jpg",
                 labelText: 'Music Events',
-                onTapRoute: TestScaffold(),
+                onTapRoute: EventListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -110,7 +111,7 @@ class EventTabSection extends StatelessWidget {
                 imageUrl:
                     "https://d3vjn2zm46gms2.cloudfront.net/blogs/2016/09/27004221/HHP046-1300x938.jpg",
                 labelText: 'Theater and Comedy',
-                onTapRoute: TestScaffold(),
+                onTapRoute: EventListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -119,7 +120,7 @@ class EventTabSection extends StatelessWidget {
                 imageUrl:
                     "https://images.onwardstate.com/uploads/2022/07/Artsfest1-13.jpg",
                 labelText: 'Art festivals',
-                onTapRoute: TestScaffold(),
+                onTapRoute: EventListPage(),
               ),
               SizedBox(
                 height: 15,

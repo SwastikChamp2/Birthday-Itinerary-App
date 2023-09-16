@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../Components/general_components.dart';
 
-class RestuarantListPage extends StatefulWidget {
+class HotelListPage extends StatefulWidget {
   @override
-  _RestuarantListPageState createState() => _RestuarantListPageState();
+  _HotelListPageState createState() => _HotelListPageState();
 }
 
-class _RestuarantListPageState extends State<RestuarantListPage>
+class _HotelListPageState extends State<HotelListPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _RestuarantListPageState extends State<RestuarantListPage>
                           width: 10,
                         ),
                         Text(
-                          'Restuarants',
+                          'Events',
                           style: TextStyle(
                             color: Color(0xFF5E6980),
                             fontSize: 18,
@@ -57,7 +57,7 @@ class _RestuarantListPageState extends State<RestuarantListPage>
             ),
           ),
           Expanded(
-            child: RestuarantList(),
+            child: HotelList(),
           ),
         ],
       ),
@@ -65,14 +65,14 @@ class _RestuarantListPageState extends State<RestuarantListPage>
   }
 }
 
-class RestuarantList extends StatefulWidget {
-  const RestuarantList({super.key});
+class HotelList extends StatefulWidget {
+  const HotelList({super.key});
 
   @override
-  State<RestuarantList> createState() => _RestuarantListState();
+  State<HotelList> createState() => _HotelListState();
 }
 
-class _RestuarantListState extends State<RestuarantList> {
+class _HotelListState extends State<HotelList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,61 +89,61 @@ class _RestuarantListState extends State<RestuarantList> {
               children: [
                 Column(
                   children: [
-                    ListCard2(
-                      title: 'The French Luxury',
-                      location: 'Yountville, California',
-                      priceRating: 4,
-                      rating: 4.9,
-                      imageUrl:
-                          'https://images.squarespace-cdn.com/content/v1/58363e4f15d5db57b198bfeb/1549387763673-PLYQ1HKTLJOJ0QT2OOWZ/Flavors+of+Paris+restaurant.jpg',
-                      onTapRoute: TestScaffold(),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListCard2(
-                      title: 'Sierra Mar',
-                      location: 'Big Sur, California',
-                      priceRating: 3,
-                      rating: 4.7,
-                      imageUrl:
-                          'https://resizer.otstatic.com/v2/photos/xlarge/2/48564030.webp',
-                      onTapRoute: TestScaffold(),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListCard2(
-                      title: 'Benu',
-                      location: 'San Francisco, California',
-                      priceRating: 4,
-                      rating: 4.4,
-                      imageUrl:
-                          'https://media-cdn.tripadvisor.com/media/photo-s/15/f7/3a/1e/08286589-2732-4e49.jpg',
-                      onTapRoute: TestScaffold(),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListCard2(
-                      title: ' Atelier Crenn',
-                      location: 'San Francisco, California',
-                      priceRating: 4,
+                    ListCard1(
+                      title: 'The Langham, New York, Fifth Avenue',
+                      location: 'New York City, New York',
+                      price: 200,
                       rating: 4.6,
                       imageUrl:
-                          'https://cdn.vox-cdn.com/thumbor/zVLjyb42WNucumFROANtRe-eoIU=/0x0:2000x1333/1920x0/filters:focal(0x0:2000x1333):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/8407741/AtelierCrenn_PChang_2390.jpg',
+                          'https://www.langhamhotels.com/content/dam/langhamhotels/dynamicmedia/north_america/the-langham-new-york-fifth-avenue-tlnyc/home/tlnyc-exterior-01.jpg',
                       onTapRoute: TestScaffold(),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    ListCard2(
-                      title: 'Chez Panisse',
-                      location: 'Berkeley, California',
-                      priceRating: 3,
-                      rating: 4.3,
+                    ListCard1(
+                      title: ' Post Ranch Inn',
+                      location: 'Big Sur, California',
+                      price: 300,
+                      rating: 4.5,
                       imageUrl:
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/ChezPanisse.jpg/375px-ChezPanisse.jpg',
+                          'https://drupal8-prod.visitcalifornia.com/sites/drupal8-prod.visitcalifornia.com/files/styles/fluid_1200/public/VCA_PostRanchInn_Supplied_Kodiak_MG_4521_1280x640.jpg?itok=qnN08YNh',
+                      onTapRoute: TestScaffold(),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ListCard1(
+                      title: 'Four Seasons Hotel New York Downtown',
+                      location: ' New York City, New York',
+                      price: 450,
+                      rating: 4.7,
+                      imageUrl:
+                          'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/07/52/0c/nyf-lobby.jpg?w=700&h=-1&s=1',
+                      onTapRoute: TestScaffold(),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ListCard1(
+                      title: 'The Peninsula Chicago',
+                      location: ' Chicago, Illinois',
+                      price: 300,
+                      rating: 4.6,
+                      imageUrl:
+                          'https://www.peninsula.com/-/media/chicago-new-homepage/exterior-web-hero-photo.jpg',
+                      onTapRoute: TestScaffold(),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ListCard1(
+                      title: 'Grand del Mar',
+                      location: 'San Diego, California',
+                      price: 400,
+                      rating: 4.5,
+                      imageUrl:
+                          'https://cf.bstatic.com/xdata/images/hotel/max1024x768/380261810.jpg?k=0f566bc992d8ea9d2c1420090ec82c0fa36bb04b6021985e2be615ed05d5e964&o=&hp=1',
                       onTapRoute: TestScaffold(),
                     ),
                     SizedBox(

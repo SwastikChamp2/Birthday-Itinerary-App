@@ -27,7 +27,7 @@ class RestuarantTabSection extends StatelessWidget {
                   title: "Bella's Pizza Joint",
                   location: "Ocean Avenue Santa Monica",
                   rating: 4.2,
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: RestuarantListPage(),
                   imageUrl:
                       "https://lh3.googleusercontent.com/p/AF1QipP7ghoOnxi1shPHWcgzb4lf4iTXdKV5JfzvGecI=s1360-w1360-h1020",
                 ),
@@ -35,7 +35,7 @@ class RestuarantTabSection extends StatelessWidget {
                   title: "Bar Raval",
                   location: "New York City, New York",
                   rating: 4.6,
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: RestuarantListPage(),
                   imageUrl:
                       "https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg",
                 ),
@@ -43,14 +43,14 @@ class RestuarantTabSection extends StatelessWidget {
                   title: "Guelaguetza",
                   location: "Los Angeles, California",
                   rating: 4.6,
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: RestuarantListPage(),
                   imageUrl:
                       "https://www.gayot.com/images/reviews/guelaguetza-los-angeles.jpg",
                 ),
                 ExplorePagePopularCard(
                   title: "The Optimist",
                   location: "Atlanta, Georgia",
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: RestuarantListPage(),
                   rating: 4.5,
                   imageUrl:
                       "https://images.otstatic.com/prod/23751941/1/huge.jpg",
@@ -84,7 +84,7 @@ class RestuarantTabSection extends StatelessWidget {
                 imageUrl:
                     "https://media-cdn.tripadvisor.com/media/photo-s/14/c8/3c/b8/happy-rajah-indian-restaurant.jpg",
                 labelText: 'Indian Restaurants',
-                onTapRoute: TestScaffold(),
+                onTapRoute: RestuarantListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -93,7 +93,7 @@ class RestuarantTabSection extends StatelessWidget {
                 imageUrl:
                     "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_800,h_534/w_49,x_9,y_9,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/c823wviodtazer6pnyoe/DiningExperienceatGoldenMonkeyChineseRestaurantUbud.jpg",
                 labelText: 'Chinese Restaurants',
-                onTapRoute: TestScaffold(),
+                onTapRoute: RestuarantListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -102,7 +102,7 @@ class RestuarantTabSection extends StatelessWidget {
                 imageUrl:
                     "https://assets.gqindia.com/photos/5dcd32036cce8200089fcb49/16:9/w_2560%2Cc_limit/LaLola-Interiors.jpg",
                 labelText: 'Italian Restaurants',
-                onTapRoute: TestScaffold(),
+                onTapRoute: RestuarantListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -111,7 +111,7 @@ class RestuarantTabSection extends StatelessWidget {
                 imageUrl:
                     "https://media-cdn.tripadvisor.com/media/photo-s/12/db/04/1b/pai-tong-thai-restaurant.jpg",
                 labelText: 'Thai Restaurants',
-                onTapRoute: TestScaffold(),
+                onTapRoute: RestuarantListPage(),
               ),
               SizedBox(
                 height: 15,
@@ -120,7 +120,7 @@ class RestuarantTabSection extends StatelessWidget {
                 imageUrl:
                     "https://popmenucloud.com/xrpblwcd/85ba676e-8969-4793-ba64-46c7724547be.jpg",
                 labelText: 'Mexican Restaurants',
-                onTapRoute: TestScaffold(),
+                onTapRoute: RestuarantListPage(),
               ),
               SizedBox(
                 height: 15,

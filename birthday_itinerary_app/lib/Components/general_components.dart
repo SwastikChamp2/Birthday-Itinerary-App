@@ -664,6 +664,13 @@ class _SearchFieldState extends State<SearchField> {
               Icons.search,
               color: Color(0xFF5E6A81),
             ),
+            SizedBox(
+              width: 20,
+            ),
+            Icon(
+              Icons.filter_alt,
+              color: Color(0xFF5E6A81),
+            ),
           ],
         ),
       ),
@@ -1043,9 +1050,10 @@ class ListCard1 extends StatelessWidget {
                       height: 10,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: 150,
+                          width: 130,
                           child: Text(
                             location,
                             style: TextStyle(
@@ -1064,7 +1072,7 @@ class ListCard1 extends StatelessWidget {
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             color: Color(0xFF5E6980),
-                            fontSize: 19,
+                            fontSize: 16,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w700,
                             height: 0,

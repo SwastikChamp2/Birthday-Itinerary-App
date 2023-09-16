@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../Components/general_components.dart';
 
-class RestuarantListPage extends StatefulWidget {
+class EventListPage extends StatefulWidget {
   @override
-  _RestuarantListPageState createState() => _RestuarantListPageState();
+  _EventListPageState createState() => _EventListPageState();
 }
 
-class _RestuarantListPageState extends State<RestuarantListPage>
+class _EventListPageState extends State<EventListPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _RestuarantListPageState extends State<RestuarantListPage>
                           width: 10,
                         ),
                         Text(
-                          'Restuarants',
+                          'Events',
                           style: TextStyle(
                             color: Color(0xFF5E6980),
                             fontSize: 18,
@@ -57,7 +57,7 @@ class _RestuarantListPageState extends State<RestuarantListPage>
             ),
           ),
           Expanded(
-            child: RestuarantList(),
+            child: EventList(),
           ),
         ],
       ),
@@ -65,14 +65,14 @@ class _RestuarantListPageState extends State<RestuarantListPage>
   }
 }
 
-class RestuarantList extends StatefulWidget {
-  const RestuarantList({super.key});
+class EventList extends StatefulWidget {
+  const EventList({super.key});
 
   @override
-  State<RestuarantList> createState() => _RestuarantListState();
+  State<EventList> createState() => _EventListState();
 }
 
-class _RestuarantListState extends State<RestuarantList> {
+class _EventListState extends State<EventList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,61 +89,62 @@ class _RestuarantListState extends State<RestuarantList> {
               children: [
                 Column(
                   children: [
-                    ListCard2(
-                      title: 'The French Luxury',
-                      location: 'Yountville, California',
-                      priceRating: 4,
+                    ListCard1(
+                      title: 'Grand Canyon National Park Tour',
+                      location: 'Arizona',
+                      price: 200,
+                      rating: 4.5,
+                      imageUrl:
+                          'https://www.nps.gov/grca/planyourvisit/images/mather-point-2021.jpg?maxwidth=1300&maxheight=1300&autorotate=false',
+                      onTapRoute: TestScaffold(),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ListCard1(
+                      title: 'Yellowstone National Park Tour',
+                      location: 'Wyoming',
+                      price: 300,
+                      rating: 4.5,
+                      imageUrl:
+                          'https://www.yellowstonenationalparklodges.com/content/uploads/2018/06/Historic-Yellow-Bus-TIFF-61.jpg',
+                      onTapRoute: TestScaffold(),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ListCard1(
+                      title:
+                          ' Justin Bieber Music concert at Madison Square Garden',
+                      location: ' New York City, New York',
+                      price: 350,
                       rating: 4.9,
                       imageUrl:
-                          'https://images.squarespace-cdn.com/content/v1/58363e4f15d5db57b198bfeb/1549387763673-PLYQ1HKTLJOJ0QT2OOWZ/Flavors+of+Paris+restaurant.jpg',
+                          'https://bridgeclubbers.com/wp-content/uploads/2017/02/Justin-Bieber-in-Mumbai.jpg',
                       onTapRoute: TestScaffold(),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    ListCard2(
-                      title: 'Sierra Mar',
-                      location: 'Big Sur, California',
-                      priceRating: 3,
-                      rating: 4.7,
+                    ListCard1(
+                      title: 'Broadway show in New York City',
+                      location: 'New York City, New York',
+                      price: 100,
+                      rating: 4.0,
                       imageUrl:
-                          'https://resizer.otstatic.com/v2/photos/xlarge/2/48564030.webp',
+                          'https://fashionista.com/.image/t_share/MTU4NDI1NTg3OTk5MzE5NTA5/best-new-york-fashion-week-street-style-spring-2019.jpg',
                       onTapRoute: TestScaffold(),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    ListCard2(
-                      title: 'Benu',
+                    ListCard1(
+                      title: ' Golden Gate Bridge tour in San Francisco',
                       location: 'San Francisco, California',
-                      priceRating: 4,
-                      rating: 4.4,
+                      price: 200,
+                      rating: 4.5,
                       imageUrl:
-                          'https://media-cdn.tripadvisor.com/media/photo-s/15/f7/3a/1e/08286589-2732-4e49.jpg',
-                      onTapRoute: TestScaffold(),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListCard2(
-                      title: ' Atelier Crenn',
-                      location: 'San Francisco, California',
-                      priceRating: 4,
-                      rating: 4.6,
-                      imageUrl:
-                          'https://cdn.vox-cdn.com/thumbor/zVLjyb42WNucumFROANtRe-eoIU=/0x0:2000x1333/1920x0/filters:focal(0x0:2000x1333):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/8407741/AtelierCrenn_PChang_2390.jpg',
-                      onTapRoute: TestScaffold(),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListCard2(
-                      title: 'Chez Panisse',
-                      location: 'Berkeley, California',
-                      priceRating: 3,
-                      rating: 4.3,
-                      imageUrl:
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/ChezPanisse.jpg/375px-ChezPanisse.jpg',
+                          'https://cdn.getyourguide.com/img/tour/019e85bedae1a067.jpeg/98.jpg',
                       onTapRoute: TestScaffold(),
                     ),
                     SizedBox(
