@@ -1,13 +1,12 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
-import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Components/general_components.dart';
 
-class RestuarantTabSection extends StatelessWidget {
-  const RestuarantTabSection({super.key});
+class EventTabSection extends StatelessWidget {
+  const EventTabSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,36 +23,36 @@ class RestuarantTabSection extends StatelessWidget {
             child: Row(
               children: [
                 ExplorePagePopularCard(
-                  title: "Bella's Pizza Joint",
-                  location: "Ocean Avenue Santa Monica",
-                  rating: 4.2,
-                  onTapRoute: RestuarantList(),
-                  imageUrl:
-                      "https://lh3.googleusercontent.com/p/AF1QipP7ghoOnxi1shPHWcgzb4lf4iTXdKV5JfzvGecI=s1360-w1360-h1020",
-                ),
-                ExplorePagePopularCard(
-                  title: "Bar Raval",
-                  location: "New York City, New York",
+                  title: "Mountain Top Skiing",
+                  location: "Aspen, Colorado",
                   rating: 4.6,
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: TestScaffold(),
                   imageUrl:
-                      "https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg",
+                      "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB",
                 ),
                 ExplorePagePopularCard(
-                  title: "Guelaguetza",
-                  location: "Los Angeles, California",
+                  title: "California Beach Scuba Diving",
+                  location: "Morro Bay, California",
                   rating: 4.6,
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: TestScaffold(),
                   imageUrl:
-                      "https://www.gayot.com/images/reviews/guelaguetza-los-angeles.jpg",
+                      "https://www.innsofmonterey.com/resourcefiles/blogsmallimages/scuba-diving-adventures-in-the-monterey-bay-national-marine-sanctuary.jpg",
                 ),
                 ExplorePagePopularCard(
-                  title: "The Optimist",
-                  location: "Atlanta, Georgia",
-                  onTapRoute: RestuarantList(),
+                  title: "Jackson Hole Paragliding",
+                  location: "Jackson Hole, Wyoming",
+                  onTapRoute: TestScaffold(),
+                  rating: 4.6,
+                  imageUrl:
+                      "http://jacksonhole-traveler-production.s3.amazonaws.com/wp-content/uploads/2014/05/11113830/Jackson-Hole-Paragliding-1920x1281.jpg",
+                ),
+                ExplorePagePopularCard(
+                  title: "Bungee Jumping in Mt. St. Helens",
+                  location: "Mt. St. Helens, Washington",
+                  onTapRoute: TestScaffold(),
                   rating: 4.5,
                   imageUrl:
-                      "https://images.otstatic.com/prod/23751941/1/huge.jpg",
+                      "https://www.jumpinheights.com/assets/images/gallery/bungy/04.jpg",
                 ),
               ],
             ),
@@ -82,8 +81,8 @@ class RestuarantTabSection extends StatelessWidget {
             children: [
               ExploreCategoryCard(
                 imageUrl:
-                    "https://media-cdn.tripadvisor.com/media/photo-s/14/c8/3c/b8/happy-rajah-indian-restaurant.jpg",
-                labelText: 'Indian Restaurants',
+                    "https://i.natgeofe.com/n/3ea82492-db0c-4b58-9bf9-247dab302e22/bir-billing-paragliding-adventure-sports-india_square.jpg",
+                labelText: 'Adventure activities',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -91,8 +90,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_800,h_534/w_49,x_9,y_9,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/c823wviodtazer6pnyoe/DiningExperienceatGoldenMonkeyChineseRestaurantUbud.jpg",
-                labelText: 'Chinese Restaurants',
+                    "https://tourscanner.com/blog/wp-content/uploads/2017/10/Featured-image.jpg",
+                labelText: 'Water Activities',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -100,8 +99,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://assets.gqindia.com/photos/5dcd32036cce8200089fcb49/16:9/w_2560%2Cc_limit/LaLola-Interiors.jpg",
-                labelText: 'Italian Restaurants',
+                    "https://boombarstick.com/wp-content/uploads/2020/11/Music-Festivals-1024x682.jpg",
+                labelText: 'Music Events',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -109,8 +108,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://media-cdn.tripadvisor.com/media/photo-s/12/db/04/1b/pai-tong-thai-restaurant.jpg",
-                labelText: 'Thai Restaurants',
+                    "https://d3vjn2zm46gms2.cloudfront.net/blogs/2016/09/27004221/HHP046-1300x938.jpg",
+                labelText: 'Theater and Comedy',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -118,8 +117,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://popmenucloud.com/xrpblwcd/85ba676e-8969-4793-ba64-46c7724547be.jpg",
-                labelText: 'Mexican Restaurants',
+                    "https://images.onwardstate.com/uploads/2022/07/Artsfest1-13.jpg",
+                labelText: 'Art festivals',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(

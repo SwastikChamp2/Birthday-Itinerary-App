@@ -1,13 +1,12 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
-import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Components/general_components.dart';
 
-class RestuarantTabSection extends StatelessWidget {
-  const RestuarantTabSection({super.key});
+class HotelTabSection extends StatelessWidget {
+  const HotelTabSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,36 +23,36 @@ class RestuarantTabSection extends StatelessWidget {
             child: Row(
               children: [
                 ExplorePagePopularCard(
-                  title: "Bella's Pizza Joint",
-                  location: "Ocean Avenue Santa Monica",
+                  title: "The Ritz-Carlton",
+                  location: "Central Park, New York City",
+                  onTapRoute: TestScaffold(),
                   rating: 4.2,
-                  onTapRoute: RestuarantList(),
                   imageUrl:
-                      "https://lh3.googleusercontent.com/p/AF1QipP7ghoOnxi1shPHWcgzb4lf4iTXdKV5JfzvGecI=s1360-w1360-h1020",
+                      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/446598387.jpg?k=9870e791bd08baf5eacb485b653320a78d6557c59dc8c9f355e60ecf67940b00&o=&hp=1",
                 ),
                 ExplorePagePopularCard(
-                  title: "Bar Raval",
-                  location: "New York City, New York",
+                  title: "The Peninsula Beverly Hills ",
+                  location: "Beverly Hills, California",
+                  onTapRoute: TestScaffold(),
                   rating: 4.6,
-                  onTapRoute: RestuarantList(),
                   imageUrl:
-                      "https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg",
+                      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/d6/c2/15/the-peninsula-beverly.jpg?w=1200&h=-1&s=1",
                 ),
                 ExplorePagePopularCard(
-                  title: "Guelaguetza",
-                  location: "Los Angeles, California",
-                  rating: 4.6,
-                  onTapRoute: RestuarantList(),
-                  imageUrl:
-                      "https://www.gayot.com/images/reviews/guelaguetza-los-angeles.jpg",
-                ),
-                ExplorePagePopularCard(
-                  title: "The Optimist",
+                  title: "The Biltmore Four Seasons Hotel",
                   location: "Atlanta, Georgia",
-                  onTapRoute: RestuarantList(),
+                  onTapRoute: TestScaffold(),
+                  rating: 4.6,
+                  imageUrl:
+                      "https://s3-media0.fl.yelpcdn.com/bphoto/QcI5ghk1F6Jqh-Wr1r0VdQ/o.jpg",
+                ),
+                ExplorePagePopularCard(
+                  title: "The Fairmont",
+                  location: "San Francisco, California",
+                  onTapRoute: TestScaffold(),
                   rating: 4.5,
                   imageUrl:
-                      "https://images.otstatic.com/prod/23751941/1/huge.jpg",
+                      "https://www.fairmont.com/assets/0/104/2865/2870/4369/4370/afe2f225-173f-4246-ae37-e37f393361db.jpg",
                 ),
               ],
             ),
@@ -82,8 +81,8 @@ class RestuarantTabSection extends StatelessWidget {
             children: [
               ExploreCategoryCard(
                 imageUrl:
-                    "https://media-cdn.tripadvisor.com/media/photo-s/14/c8/3c/b8/happy-rajah-indian-restaurant.jpg",
-                labelText: 'Indian Restaurants',
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/8a/e0/b9/bellagio-las-vegas.jpg?w=1200&h=-1&s=1",
+                labelText: 'Luxury Hotels',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -91,8 +90,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_800,h_534/w_49,x_9,y_9,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/c823wviodtazer6pnyoe/DiningExperienceatGoldenMonkeyChineseRestaurantUbud.jpg",
-                labelText: 'Chinese Restaurants',
+                    "https://www.southernliving.com/thmb/wgYAAkFG3jbDqQEwyWSlj6ADhVE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eau-palm-hotel-beach-2000-b791165230e34f00bd1961cf3c33dffe.jpg",
+                labelText: 'Beach Hotels',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -100,8 +99,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://assets.gqindia.com/photos/5dcd32036cce8200089fcb49/16:9/w_2560%2Cc_limit/LaLola-Interiors.jpg",
-                labelText: 'Italian Restaurants',
+                    "https://www.travelandleisure.com/thmb/pCU_Y9fbQe4CT5Q73J9k2Bqd_bI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/header-grand-velas-los-cabos-MXALLINC0222-46d3772ad56f4493a83e1bcb49e119f9.jpg",
+                labelText: 'Resorts',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -109,8 +108,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://media-cdn.tripadvisor.com/media/photo-s/12/db/04/1b/pai-tong-thai-restaurant.jpg",
-                labelText: 'Thai Restaurants',
+                    "https://www.lehighvalleylive.com/resizer/9avAJwqD8RmM-lwEvv6grQheewM=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/BV4QZRII2FA7TLSHQ4LU3JUY3A.jpg",
+                labelText: 'Historic Hotels',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(
@@ -118,8 +117,8 @@ class RestuarantTabSection extends StatelessWidget {
               ),
               ExploreCategoryCard(
                 imageUrl:
-                    "https://popmenucloud.com/xrpblwcd/85ba676e-8969-4793-ba64-46c7724547be.jpg",
-                labelText: 'Mexican Restaurants',
+                    "https://skift.com/wp-content/uploads/2018/03/RedDoorz-Room-Interior-Indonesia.jpg",
+                labelText: 'Budget Hotels',
                 onTapRoute: TestScaffold(),
               ),
               SizedBox(

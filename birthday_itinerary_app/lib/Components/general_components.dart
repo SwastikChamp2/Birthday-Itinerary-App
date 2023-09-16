@@ -1,6 +1,9 @@
+import 'package:birthday_itinerary_app/Pages/explore__page.dart';
 import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
+import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
+import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 
 class FixedBottomBar extends StatelessWidget {
   @override
@@ -407,141 +410,153 @@ class ExplorePagePopularCard extends StatelessWidget {
   final String location;
   final double rating;
   final String imageUrl;
+  final Widget onTapRoute; // Add this parameter for navigation
 
   ExplorePagePopularCard({
     required this.title,
     required this.location,
     required this.rating,
     required this.imageUrl,
+    required this.onTapRoute, // Initialize onTapRoute when calling the instance
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Container(
-        width: 233,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 200,
-              height: 140,
-              decoration: BoxDecoration(
-                color: Color(0xFFC4C4C4),
-                borderRadius: BorderRadius.circular(16),
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.fill,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  onTapRoute), // Use onTapRoute for navigation
+        );
+      },
+      child: Card(
+        color: Colors.white,
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          width: 233,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 200,
+                height: 140,
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 10,
-                bottom: 10,
-                right: 10,
-                left: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 150,
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                            color: Color(0xFF5E6980),
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            width: 42,
-                            height: 18,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 0,
-                                  child: Container(
-                                    width: 42,
-                                    height: 18,
-                                    decoration: ShapeDecoration(
-                                      color: Color(0xFF5E6980),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(47.62),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 18,
-                                  top: 3,
-                                  child: SizedBox(
-                                    width: 15.75,
-                                    height: 14.70,
-                                    child: Text(
-                                      rating.toString(),
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 9.52,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 7,
-                                  top: 4,
-                                  child: Image.asset(
-                                    'assets/star.png',
-                                    height: 8,
-                                    width: 8,
-                                  ),
-                                ),
-                              ],
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                  right: 10,
+                  left: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 150,
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                              color: Color(0xFF5E6980),
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    location,
-                    style: TextStyle(
-                      color: Color(0xFF5E6980),
-                      fontSize: 10,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w300,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              width: 42,
+                              height: 18,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    left: 0,
+                                    top: 0,
+                                    child: Container(
+                                      width: 42,
+                                      height: 18,
+                                      decoration: ShapeDecoration(
+                                        color: Color(0xFF5E6980),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(47.62),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 18,
+                                    top: 3,
+                                    child: SizedBox(
+                                      width: 15.75,
+                                      height: 14.70,
+                                      child: Text(
+                                        rating.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 9.52,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 7,
+                                    top: 4,
+                                    child: Image.asset(
+                                      'assets/star.png',
+                                      height: 8,
+                                      width: 8,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  )
-                ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      location,
+                      style: TextStyle(
+                        color: Color(0xFF5E6980),
+                        fontSize: 10,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -635,6 +650,7 @@ class _SearchFieldState extends State<SearchField> {
           children: [
             Expanded(
               child: TextField(
+                style: TextStyle(color: Color(0xFF5E6A81)),
                 decoration: InputDecoration(
                   hintText: "Search",
                   hintStyle: TextStyle(
@@ -658,57 +674,628 @@ class _SearchFieldState extends State<SearchField> {
 class ExploreCategoryCard extends StatelessWidget {
   final String imageUrl;
   final String labelText;
+  final Widget onTapRoute; // Add this parameter for navigation
 
   ExploreCategoryCard({
     required this.imageUrl,
     required this.labelText,
+    required this.onTapRoute, // Initialize onTapRoute when calling the instance
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shadowColor: Colors.grey.shade300,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      color: Colors.white,
-      child: SizedBox(
-        width: 331,
-        height: 70,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                color: Color(0xFFC4C4C4),
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.fill,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  onTapRoute), // Use onTapRoute for navigation
+        );
+      },
+      child: Card(
+        elevation: 5,
+        shadowColor: Colors.grey.shade300,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        color: Colors.white,
+        child: SizedBox(
+          width: 331,
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFC4C4C4),
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 10),
-            Text(
-              labelText,
-              style: TextStyle(
-                color: Color(0xFF757575),
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
+              SizedBox(width: 10),
+              Text(
+                labelText,
+                style: TextStyle(
+                  color: Color(0xFF757575),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            SizedBox(width: 10),
-            IconButton(
-              icon: Icon(Icons.chevron_right_outlined),
-              iconSize: 50,
-              color: Color.fromARGB(255, 97, 95, 95),
-              onPressed: () {},
-            ),
-          ],
+              SizedBox(width: 10),
+              IconButton(
+                icon: Icon(Icons.chevron_right_outlined),
+                iconSize: 50,
+                color: Color.fromARGB(255, 97, 95, 95),
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ListCardforEventsandHotel extends StatelessWidget {
+  final String imageUrl;
+  final String labelText;
+  final Widget onTapRoute; // Add this parameter for navigation
+
+  ListCardforEventsandHotel({
+    required this.imageUrl,
+    required this.labelText,
+    required this.onTapRoute, // Initialize onTapRoute when calling the instance
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  onTapRoute), // Use onTapRoute for navigation
+        );
+      },
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        color: Colors.white,
+        child: Container(
+          width: 258,
+          padding: EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Whispering Woods',
+                    style: TextStyle(
+                      color: Color(0xFF5E6980),
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    child: Text(
+                      'Ocean Avenue, Santa Monica,',
+                      style: TextStyle(
+                        color: Color(0xFF5E6980),
+                        fontSize: 10,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w300,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: <Widget>[
+                      Column(
+                        children: [
+                          Container(
+                            width: 42,
+                            height: 18,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 42,
+                                    height: 18,
+                                    decoration: ShapeDecoration(
+                                      color: Color(0xFF5E6980),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(47.62),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 18,
+                                  top: 3,
+                                  child: SizedBox(
+                                    width: 15.75,
+                                    height: 14.70,
+                                    child: Text(
+                                      '4.6',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 9.52,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        height: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 7,
+                                  top: 4,
+                                  child: Image.asset(
+                                    'assets/star.png',
+                                    height: 8,
+                                    width: 8,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Text(
+                        '\$45',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Color(0xFF5E6980),
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ListCard1 extends StatelessWidget {
+  final String title;
+  final String location;
+  final double rating;
+  final String imageUrl;
+  final int price;
+  final Widget onTapRoute; // Add this parameter for navigation
+
+  ListCard1({
+    required this.title,
+    required this.location,
+    required this.rating,
+    required this.price,
+    required this.imageUrl,
+    required this.onTapRoute, // Initialize onTapRoute when calling the instance
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  onTapRoute), // Use onTapRoute for navigation
+        );
+      },
+      child: Card(
+        color: Colors.white,
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          width: 233,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 200,
+                height: 140,
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                  right: 10,
+                  left: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 150,
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                              color: Color(0xFF5E6980),
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              width: 42,
+                              height: 18,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    left: 0,
+                                    top: 0,
+                                    child: Container(
+                                      width: 42,
+                                      height: 18,
+                                      decoration: ShapeDecoration(
+                                        color: Color(0xFF5E6980),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(47.62),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 18,
+                                    top: 3,
+                                    child: SizedBox(
+                                      width: 15.75,
+                                      height: 14.70,
+                                      child: Text(
+                                        rating.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 9.52,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 7,
+                                    top: 4,
+                                    child: Image.asset(
+                                      'assets/star.png',
+                                      height: 8,
+                                      width: 8,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 150,
+                          child: Text(
+                            location,
+                            style: TextStyle(
+                              color: Color(0xFF5E6980),
+                              fontSize: 10,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '\$ $price',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Color(0xFF5E6980),
+                            fontSize: 19,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w700,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ListCard2 extends StatelessWidget {
+  final String title;
+  final String location;
+  final double rating;
+  final String imageUrl;
+  final double priceRating; // Updated to double for rating
+  final Widget onTapRoute;
+
+  ListCard2({
+    required this.title,
+    required this.location,
+    required this.rating,
+    required this.imageUrl,
+    required this.priceRating, // make the price rating between 0 - 4 (keep it a whole number else it will be rounded to nearest whole number)
+    required this.onTapRoute,
+  });
+
+  Widget buildPriceRating(double ratingValue) {
+    final int fullDollars = ratingValue.floor();
+    final double fractionalPart = ratingValue - fullDollars;
+
+    // Determine the number of full green dollars
+    final List<Widget> dollarIcons = List.generate(fullDollars, (_) {
+      return Icon(
+        Icons.attach_money,
+        color: Colors.green,
+        size: 15,
+      );
+    });
+
+    // If there's a fractional part, add a partially green dollar
+    if (fractionalPart > 0.0) {
+      dollarIcons.add(
+        Icon(
+          Icons.attach_money,
+          color: Colors.green,
+          size: 15,
+        ),
+      );
+      dollarIcons.add(
+        Icon(
+          Icons.attach_money,
+          color: Colors.grey,
+          size: 15,
+        ),
+      );
+    }
+
+    // Add remaining gray dollars
+    dollarIcons.addAll(List.generate(4 - dollarIcons.length, (_) {
+      return Icon(
+        Icons.attach_money,
+        color: Colors.grey,
+        size: 15,
+      );
+    }));
+
+    return Row(
+      children: dollarIcons,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => onTapRoute,
+          ),
+        );
+      },
+      child: Card(
+        color: Colors.white,
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          width: 233,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 200,
+                height: 140,
+                decoration: BoxDecoration(
+                  color: Color(0xFFC4C4C4),
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                  right: 10,
+                  left: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 150,
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                              color: Color(0xFF5E6980),
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              width: 42,
+                              height: 18,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    left: 0,
+                                    top: 0,
+                                    child: Container(
+                                      width: 42,
+                                      height: 18,
+                                      decoration: ShapeDecoration(
+                                        color: Color(0xFF5E6980),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(47.62),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 18,
+                                    top: 3,
+                                    child: SizedBox(
+                                      width: 15.75,
+                                      height: 14.70,
+                                      child: Text(
+                                        rating.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 9.52,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 7,
+                                    top: 4,
+                                    child: Image.asset(
+                                      'assets/star.png',
+                                      height: 8,
+                                      width: 8,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 130,
+                          child: Text(
+                            location,
+                            style: TextStyle(
+                              color: Color(0xFF5E6980),
+                              fontSize: 10,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        buildPriceRating(priceRating), // Use the custom method
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
