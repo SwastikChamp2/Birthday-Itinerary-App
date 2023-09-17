@@ -5,6 +5,118 @@ import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 
+import 'package:flutter/material.dart';
+
+Widget buildPriceRating(double ratingValue) {
+  final int fullDollars = ratingValue.floor();
+  final double fractionalPart = ratingValue - fullDollars;
+
+  // Determine the number of full green dollars
+  final List<Widget> dollarIcons = List.generate(fullDollars, (_) {
+    return Icon(
+      Icons.attach_money,
+      color: Colors.green,
+      size: 15,
+    );
+  });
+
+  // If there's a fractional part, add a partially green dollar
+  if (fractionalPart > 0.0) {
+    dollarIcons.add(
+      Icon(
+        Icons.attach_money,
+        color: Colors.green,
+        size: 15,
+      ),
+    );
+    dollarIcons.add(
+      Icon(
+        Icons.attach_money,
+        color: Colors.grey,
+        size: 15,
+      ),
+    );
+  }
+
+  // Add remaining gray dollars
+  dollarIcons.addAll(List.generate(4 - dollarIcons.length, (_) {
+    return Icon(
+      Icons.attach_money,
+      color: Colors.grey,
+      size: 15,
+    );
+  }));
+
+  return Row(
+    children: dollarIcons,
+  );
+}
+
+class StarRatingChip extends StatelessWidget {
+  final double rating;
+
+  StarRatingChip({
+    required this.rating,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 42,
+          height: 18,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                top: 0,
+                child: Container(
+                  width: 42,
+                  height: 18,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFF5E6980),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(47.62),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 18,
+                top: 3,
+                child: SizedBox(
+                  width: 15.75,
+                  height: 14.70,
+                  child: Text(
+                    rating.toString(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 9.52,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                      height: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 7,
+                top: 4,
+                child: Image.asset(
+                  'assets/star.png',
+                  height: 8,
+                  width: 8,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class FixedBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -324,12 +436,12 @@ class CustomEventDetailCard extends StatelessWidget {
   }
 }
 
-class CustomTitleText extends StatelessWidget {
+class CustomTitleTextforItineraryDetail extends StatelessWidget {
   final String itineraryTitle;
   final int itineraryPricePerPerson;
   final String itineraryLocation;
 
-  CustomTitleText({
+  CustomTitleTextforItineraryDetail({
     required this.itineraryTitle,
     required this.itineraryPricePerPerson,
     required this.itineraryLocation,
@@ -397,6 +509,74 @@ class CustomTitleText extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomTitleTextforRestuarantDetail extends StatelessWidget {
+  final String restuarantName;
+  final double restuarantrating;
+  final String restuarantLocation;
+  final double priceRating;
+
+  CustomTitleTextforRestuarantDetail({
+    required this.restuarantName,
+    required this.restuarantrating,
+    required this.restuarantLocation,
+    required this.priceRating,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Column 1
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 250,
+                child: Text(
+                  restuarantName,
+                  style: TextStyle(
+                    color: Color(0xFF5E6980),
+                    fontSize: 18.57,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(height: 4.0),
+              Container(
+                width: 250,
+                child: Text(
+                  restuarantLocation,
+                  style: TextStyle(
+                    color: Color(0x7F425884),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          // Column 2
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              StarRatingChip(rating: restuarantrating),
+              SizedBox(
+                height: 20,
+              ),
+              buildPriceRating(priceRating),
             ],
           ),
         ],
@@ -481,60 +661,7 @@ class ExplorePagePopularCard extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              width: 42,
-                              height: 18,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0,
-                                    child: Container(
-                                      width: 42,
-                                      height: 18,
-                                      decoration: ShapeDecoration(
-                                        color: Color(0xFF5E6980),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(47.62),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 18,
-                                    top: 3,
-                                    child: SizedBox(
-                                      width: 15.75,
-                                      height: 14.70,
-                                      child: Text(
-                                        rating.toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 9.52,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 7,
-                                    top: 4,
-                                    child: Image.asset(
-                                      'assets/star.png',
-                                      height: 8,
-                                      width: 8,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
+                        StarRatingChip(rating: rating),
                       ],
                     ),
                     SizedBox(
@@ -756,12 +883,14 @@ class ExploreCategoryCard extends StatelessWidget {
 class ListCardforEventsandHotel extends StatelessWidget {
   final String imageUrl;
   final String labelText;
-  final Widget onTapRoute; // Add this parameter for navigation
+  final Widget onTapRoute;
+  final double rating;
 
   ListCardforEventsandHotel({
     required this.imageUrl,
     required this.labelText,
-    required this.onTapRoute, // Initialize onTapRoute when calling the instance
+    required this.onTapRoute,
+    required this.rating,
   });
 
   @override
@@ -832,60 +961,7 @@ class ListCardforEventsandHotel extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: <Widget>[
-                      Column(
-                        children: [
-                          Container(
-                            width: 42,
-                            height: 18,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 0,
-                                  child: Container(
-                                    width: 42,
-                                    height: 18,
-                                    decoration: ShapeDecoration(
-                                      color: Color(0xFF5E6980),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(47.62),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 18,
-                                  top: 3,
-                                  child: SizedBox(
-                                    width: 15.75,
-                                    height: 14.70,
-                                    child: Text(
-                                      '4.6',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 9.52,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 7,
-                                  top: 4,
-                                  child: Image.asset(
-                                    'assets/star.png',
-                                    height: 8,
-                                    width: 8,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      StarRatingChip(rating: rating),
                       SizedBox(
                         width: 40,
                       ),
@@ -990,60 +1066,7 @@ class ListCard1 extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              width: 42,
-                              height: 18,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0,
-                                    child: Container(
-                                      width: 42,
-                                      height: 18,
-                                      decoration: ShapeDecoration(
-                                        color: Color(0xFF5E6980),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(47.62),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 18,
-                                    top: 3,
-                                    child: SizedBox(
-                                      width: 15.75,
-                                      height: 14.70,
-                                      child: Text(
-                                        rating.toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 9.52,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 7,
-                                    top: 4,
-                                    child: Image.asset(
-                                      'assets/star.png',
-                                      height: 8,
-                                      width: 8,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
+                        StarRatingChip(rating: rating),
                       ],
                     ),
                     SizedBox(
@@ -1111,51 +1134,6 @@ class ListCard2 extends StatelessWidget {
     required this.onTapRoute,
   });
 
-  Widget buildPriceRating(double ratingValue) {
-    final int fullDollars = ratingValue.floor();
-    final double fractionalPart = ratingValue - fullDollars;
-
-    // Determine the number of full green dollars
-    final List<Widget> dollarIcons = List.generate(fullDollars, (_) {
-      return Icon(
-        Icons.attach_money,
-        color: Colors.green,
-        size: 15,
-      );
-    });
-
-    // If there's a fractional part, add a partially green dollar
-    if (fractionalPart > 0.0) {
-      dollarIcons.add(
-        Icon(
-          Icons.attach_money,
-          color: Colors.green,
-          size: 15,
-        ),
-      );
-      dollarIcons.add(
-        Icon(
-          Icons.attach_money,
-          color: Colors.grey,
-          size: 15,
-        ),
-      );
-    }
-
-    // Add remaining gray dollars
-    dollarIcons.addAll(List.generate(4 - dollarIcons.length, (_) {
-      return Icon(
-        Icons.attach_money,
-        color: Colors.grey,
-        size: 15,
-      );
-    }));
-
-    return Row(
-      children: dollarIcons,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -1217,60 +1195,7 @@ class ListCard2 extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              width: 42,
-                              height: 18,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0,
-                                    child: Container(
-                                      width: 42,
-                                      height: 18,
-                                      decoration: ShapeDecoration(
-                                        color: Color(0xFF5E6980),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(47.62),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 18,
-                                    top: 3,
-                                    child: SizedBox(
-                                      width: 15.75,
-                                      height: 14.70,
-                                      child: Text(
-                                        rating.toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 9.52,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 7,
-                                    top: 4,
-                                    child: Image.asset(
-                                      'assets/star.png',
-                                      height: 8,
-                                      width: 8,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        StarRatingChip(rating: rating),
                       ],
                     ),
                     SizedBox(
@@ -1304,6 +1229,101 @@ class ListCard2 extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class RestuarantTimingTable extends StatelessWidget {
+  final String day;
+  final String time;
+
+  RestuarantTimingTable({required this.day, required this.time});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Text(
+              day,
+              style: TextStyle(
+                color: Color(0xFF222222),
+                fontSize: 14,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w500,
+                height: 0.04,
+              ),
+            ),
+            const SizedBox(height: 25),
+          ],
+        ),
+        SizedBox(width: 30),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              time,
+              style: TextStyle(
+                color: Color(0xFF222222),
+                fontSize: 14,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                height: 0.11,
+              ),
+            ),
+            const SizedBox(height: 25),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class ChipList extends StatelessWidget {
+  final List<String> items;
+
+  ChipList({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 8.0,
+      children: items.map((item) {
+        return Chip(
+          label: Text(item),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class BlueButton extends StatelessWidget {
+  final String buttonTitle;
+
+  BlueButton({required this.buttonTitle});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        // Add your onPressed logic here
+      },
+      style: ElevatedButton.styleFrom(
+        primary: Color(0xFF3AA8D6), // Button color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0), // Border radius
+        ),
+        minimumSize: Size(189.0, 50.0), // Button dimensions
+      ),
+      child: Text(
+        buttonTitle,
+        style: TextStyle(
+          fontSize: 16.0, // Text size
+          color: Colors.white, // Text color
         ),
       ),
     );

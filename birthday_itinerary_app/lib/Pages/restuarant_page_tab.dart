@@ -1,4 +1,5 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
+import 'package:birthday_itinerary_app/Pages/restuarant_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class RestuarantTabSection extends StatelessWidget {
                   title: "Bar Raval",
                   location: "New York City, New York",
                   rating: 4.6,
-                  onTapRoute: RestuarantListPage(),
+                  onTapRoute: RestuarantDetailPage(),
                   imageUrl:
                       "https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg",
                 ),

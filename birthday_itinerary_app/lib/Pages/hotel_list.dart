@@ -38,7 +38,7 @@ class _HotelListPageState extends State<HotelListPage>
                           width: 10,
                         ),
                         Text(
-                          'Events',
+                          'Hotels',
                           style: TextStyle(
                             color: Color(0xFF5E6980),
                             fontSize: 18,

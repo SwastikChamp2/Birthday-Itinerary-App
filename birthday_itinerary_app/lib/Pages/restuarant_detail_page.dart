@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
-class ItineraryDetailPage extends StatefulWidget {
+class RestuarantDetailPage extends StatefulWidget {
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
 
-class _ExplorePageState extends State<ItineraryDetailPage> {
+class _ExplorePageState extends State<RestuarantDetailPage> {
   String coverImageUrl =
-      'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg';
+      'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg';
 
   void changeCoverImage(String newImageUrl) {
     setState(() {
@@ -35,10 +35,11 @@ class _ExplorePageState extends State<ItineraryDetailPage> {
           ),
           // Add the Horizontal Scrollable Row
           HorizontalImageRow(changeCoverImage),
-          CustomTitleTextforItineraryDetail(
-            itineraryTitle: 'Culinary Delight Fiesta',
-            itineraryPricePerPerson: 45,
-            itineraryLocation: 'Napa Valley, California',
+          CustomTitleTextforRestuarantDetail(
+            restuarantName: 'Bar Raval Restaurant',
+            priceRating: 4,
+            restuarantrating: 5.5,
+            restuarantLocation: 'New York City, New York',
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -75,7 +76,11 @@ class ExplorePageContent extends StatelessWidget {
               Container(
                 width: 331,
                 child: Text(
-                  'Embark on a luxurious culinary journey. Create gourmet masterpieces, savor fine flavors, and delight in interactive dining.',
+                  '''Bar Raval Restaurant is a sophisticated and elegant bar restaurant that offers a unique dining experience. Located in the heart of New York, our restaurant is the perfect place to enjoy a delicious meal and a refreshing cocktail in a stylish and upscale setting.
+
+Our menu features a variety of modern American dishes, all prepared with the freshest ingredients and finest cuts of meat and seafood. We also offer a wide selection of wines, beers, and cocktails to complement your meal.
+
+Our bar is staffed by experienced and knowledgeable bartenders who can create any drink you desire, from classic cocktails to innovative new creations. We also have a wide selection of craft beers and artisanal wines on tap''',
                   style: TextStyle(
                     color: Color(0xFF425884),
                     fontSize: 12,
@@ -120,7 +125,43 @@ class ExplorePageContent extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Event Details',
+                  'Timings',
+                  style: TextStyle(
+                    color: Color(0xFF151516),
+                    fontSize: 18.57,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Column(
+                children: [
+                  RestuarantTimingTable(
+                      day: 'Monday', time: '9:00 AM - 12:00 PM'),
+                  RestuarantTimingTable(
+                      day: 'Tuesday', time: '10:30 AM - 1:30 PM'),
+                  RestuarantTimingTable(
+                      day: 'Wednesday', time: '11:15 AM - 2:15 PM'),
+                  RestuarantTimingTable(
+                      day: 'Thursday', time: '8:45 AM - 11:45 AM'),
+                  RestuarantTimingTable(
+                      day: 'Friday', time: '1:30 PM - 4:30 PM'),
+                  RestuarantTimingTable(
+                      day: 'Saturday', time: '9:30 AM - 12:30 PM'),
+                  RestuarantTimingTable(
+                      day: 'Sunday', time: '2:00 PM - 5:00 PM'),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Facilities and Ammenities',
                   style: TextStyle(
                     color: Color(0xFF151516),
                     fontSize: 18.57,
@@ -132,7 +173,17 @@ class ExplorePageContent extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              EventDetails(),
+              ChipList(
+                items: [
+                  'Free Wi-Fi',
+                  'Pet-Friendly',
+                  'Free Parking',
+                  'Outdoor Seating',
+                  'Wheelchair Accessibility',
+                  'Kid-Friendly',
+                  'Vegan Options',
+                ],
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -145,66 +196,6 @@ class ExplorePageContent extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class EventDetails extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          CustomEventDetailCard(
-            individualEventTitle: 'Welcome Breakfast',
-            individualEventDate: '9:00 AM - 11:00 AM',
-            individualEventLocation: 'The Garden Terrace Cafe',
-            individualEventDescription:
-                'Indulge in a gourmet morning spread in the Garden Terrace.',
-            isIndividualEventActive: false,
-          ),
-          CustomEventDetailCard(
-            individualEventTitle: 'Welcome Lunch',
-            individualEventDate: '12:00 PM - 01:30 PM',
-            individualEventLocation: 'The Garden Terrace Restuarant',
-            individualEventDescription:
-                'Indulge in Lunch at the Garden Terrace.',
-            isIndividualEventActive: false,
-          ),
-          CustomEventDetailCard(
-            individualEventTitle: 'Gourmet Pizza Lunch',
-            individualEventDate: '12:00 PM - 01:30 PM',
-            individualEventLocation: 'The Artisan Kitchen',
-            isIndividualEventActive: false,
-            individualEventDescription:
-                'Savour personalized pizzas in the vibrant Artisan Kitchen.',
-          ),
-          CustomEventDetailCard(
-            individualEventTitle: 'Cupcake Decorating Extravaganza',
-            individualEventDate: '2:00 PM - 3:00 PM',
-            individualEventLocation: 'The Dessert Haven',
-            isIndividualEventActive: false,
-            individualEventDescription:
-                'Get creative with cupcake decorations in the sunlit conservatory of Desert Heaven',
-          ),
-          CustomEventDetailCard(
-            individualEventTitle: 'Taste-Testing and Foodie Games',
-            individualEventDate: '3:30 PM - 6:30 PM',
-            individualEventLocation: 'The Tasting Lounge Bar and Cafe',
-            isIndividualEventActive: false,
-            individualEventDescription:
-                'Engage in fun-filled food-related games in the cozy lounge area of Harmonyville Estate.',
-          ),
-          CustomEventDetailCard(
-            individualEventTitle: 'Grand Dinner Feast',
-            individualEventDate: '7:00 PM - 9:30 PM',
-            individualEventLocation: 'The Grand Indian Hotel',
-            isIndividualEventActive: false,
-            individualEventDescription:
-                'Conclude the day with an exquisite dinner in the grand dining hall',
-          ),
-        ],
       ),
     );
   }
