@@ -218,33 +218,33 @@ class HorizontalImageRow extends StatelessWidget {
           // Use HorizontalImage for each image
           HorizontalImage(
             imageUrl:
-                'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg',
+                'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg',
             onTap: () => onImageTap(
-                'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg'),
+                'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg'),
           ),
           HorizontalImage(
             imageUrl:
-                'https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA=',
+                'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg',
             onTap: () => onImageTap(
-                'https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA='),
+                'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg'),
           ),
           HorizontalImage(
             imageUrl:
-                'https://imgmedia.lbb.in/media/2019/08/5d43d83bca10992d055cc50d_1564727355126.jpg',
+                'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg',
             onTap: () => onImageTap(
-                'https://imgmedia.lbb.in/media/2019/08/5d43d83bca10992d055cc50d_1564727355126.jpg'),
+                'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg'),
           ),
           HorizontalImage(
             imageUrl:
-                'https://fesmag.com/images/stories/2022-02/MS_sunsetroom.jpg',
+                'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg',
             onTap: () => onImageTap(
-                'https://fesmag.com/images/stories/2022-02/MS_sunsetroom.jpg'),
+                'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg'),
           ),
           HorizontalImage(
             imageUrl:
-                'https://img.freepik.com/premium-photo/delicious-food-fine-dining-restaurant-ultra-realistic-generative-ai_751108-3797.jpg?w=2000',
+                'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg',
             onTap: () => onImageTap(
-                'https://img.freepik.com/premium-photo/delicious-food-fine-dining-restaurant-ultra-realistic-generative-ai_751108-3797.jpg?w=2000'),
+                'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg'),
           ),
           // Add more HorizontalImage widgets as needed
         ],
