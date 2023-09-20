@@ -1,6 +1,7 @@
 import 'package:birthday_itinerary_app/Pages/explore__page.dart';
 import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
+import 'package:birthday_itinerary_app/Pages/payment_page.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
@@ -203,51 +204,28 @@ class FixedBottomBar extends StatelessWidget {
 }
 
 class HorizontalImageRow extends StatelessWidget {
-  final Function(String) onImageTap;
+  final List<String> imageUrls;
+  final List<void Function()> onTapRoutes;
 
-  HorizontalImageRow(this.onImageTap);
+  HorizontalImageRow({
+    required this.imageUrls,
+    required this.onTapRoutes,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 55.88,
       color: Color(0xFFF0F7FF),
-      child: ListView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        children: [
-          // Use HorizontalImage for each image
-          HorizontalImage(
-            imageUrl:
-                'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg',
-            onTap: () => onImageTap(
-                'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg',
-            onTap: () => onImageTap(
-                'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg',
-            onTap: () => onImageTap(
-                'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg',
-            onTap: () => onImageTap(
-                'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg'),
-          ),
-          HorizontalImage(
-            imageUrl:
-                'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg',
-            onTap: () => onImageTap(
-                'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg'),
-          ),
-          // Add more HorizontalImage widgets as needed
-        ],
+        itemCount: imageUrls.length,
+        itemBuilder: (context, index) {
+          return HorizontalImage(
+            imageUrl: imageUrls[index],
+            onTap: onTapRoutes[index],
+          );
+        },
       ),
     );
   }
@@ -255,30 +233,22 @@ class HorizontalImageRow extends StatelessWidget {
 
 class HorizontalImage extends StatelessWidget {
   final String imageUrl;
-  final Function onTap;
+  final void Function()? onTap;
 
-  HorizontalImage({
-    required this.imageUrl,
-    required this.onTap,
-  });
+  HorizontalImage({required this.imageUrl, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        onTap();
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          width: 60.05,
-          height: 55.88,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: NetworkImage(imageUrl),
-              fit: BoxFit.cover,
-            ),
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.all(8.0), // Adjust the margin as needed
+        width: 60.0, // Adjust the width as needed
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0), // Add border radius
+          image: DecorationImage(
+            image: NetworkImage(imageUrl),
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -437,14 +407,16 @@ class CustomEventDetailCard extends StatelessWidget {
 }
 
 class CustomTitleTextforItineraryDetail extends StatelessWidget {
-  final String itineraryTitle;
-  final int itineraryPricePerPerson;
-  final String itineraryLocation;
+  final String Title;
+  final int PricePerPerson;
+  final String Location;
+  final double Rating;
 
   CustomTitleTextforItineraryDetail({
-    required this.itineraryTitle,
-    required this.itineraryPricePerPerson,
-    required this.itineraryLocation,
+    required this.Title,
+    required this.PricePerPerson,
+    required this.Location,
+    required this.Rating,
   });
 
   @override
@@ -461,7 +433,7 @@ class CustomTitleTextforItineraryDetail extends StatelessWidget {
               Container(
                 width: 250,
                 child: Text(
-                  itineraryTitle,
+                  Title,
                   style: TextStyle(
                     color: Color(0xFF5E6980),
                     fontSize: 18.57,
@@ -474,7 +446,7 @@ class CustomTitleTextforItineraryDetail extends StatelessWidget {
               Container(
                 width: 250,
                 child: Text(
-                  itineraryLocation,
+                  Location,
                   style: TextStyle(
                     color: Color(0x7F425884),
                     fontSize: 14,
@@ -487,27 +459,35 @@ class CustomTitleTextforItineraryDetail extends StatelessWidget {
           ),
           // Column 2
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                '\$$itineraryPricePerPerson',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: Color(0xFF5E6980),
-                  fontSize: 20,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
-                ),
+              StarRatingChip(rating: Rating),
+              SizedBox(
+                height: 10,
               ),
-              Text(
-                'Per person',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: Color(0x7F425884),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    '\$$PricePerPerson',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: Color(0xFF5E6980),
+                      fontSize: 20,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  // Text(
+                  //   'Per person',
+                  //   textAlign: TextAlign.right,
+                  //   style: TextStyle(
+                  //     color: Color(0x7F425884),
+                  //     fontSize: 14,
+                  //     fontFamily: 'Poppins',
+                  //     fontWeight: FontWeight.w400,
+                  //   ),
+                  // ),
+                ],
               ),
             ],
           ),
@@ -1310,7 +1290,12 @@ class BlueButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add your onPressed logic here
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  PaymentPage()), // Use onTapRoute for navigation
+        );
       },
       style: ElevatedButton.styleFrom(
         primary: Color(0xFF3AA8D6), // Button color
@@ -1325,6 +1310,65 @@ class BlueButton extends StatelessWidget {
           fontSize: 16.0, // Text size
           color: Colors.white, // Text color
         ),
+      ),
+    );
+  }
+}
+
+class RoomTableItem extends StatelessWidget {
+  final String room;
+  final String description;
+  final int price;
+
+  RoomTableItem({
+    required this.room,
+    required this.description,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Text(
+              room,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            flex: 4,
+            child: Text(
+              description,
+              style: TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            flex: 2,
+            child: Text(
+              '\$$price',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 21, 76, 121),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

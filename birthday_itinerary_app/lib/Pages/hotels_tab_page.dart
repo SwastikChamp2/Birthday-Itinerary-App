@@ -1,4 +1,5 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
+import 'package:birthday_itinerary_app/Pages/hotel_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/hotel_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class HotelTabSection extends StatelessWidget {
                 ExplorePagePopularCard(
                   title: "The Fairmont",
                   location: "San Francisco, California",
-                  onTapRoute: HotelListPage(),
+                  onTapRoute: HotelDetailPage(),
                   rating: 4.5,
                   imageUrl:
                       "https://www.fairmont.com/assets/0/104/2865/2870/4369/4370/afe2f225-173f-4246-ae37-e37f393361db.jpg",

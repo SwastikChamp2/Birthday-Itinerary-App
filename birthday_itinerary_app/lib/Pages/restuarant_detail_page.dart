@@ -1,3 +1,4 @@
+import 'package:birthday_itinerary_app/Pages/map_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
@@ -60,7 +61,38 @@ class _ExplorePageState extends State<RestuarantDetailPage> {
             ],
           ),
           // Add the Horizontal Scrollable Row
-          HorizontalImageRow(changeCoverImage),
+          HorizontalImageRow(
+            imageUrls: [
+              'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg',
+              'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg',
+              'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg',
+              'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg',
+              'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg',
+            ],
+            onTapRoutes: [
+              () {
+                changeCoverImage(
+                    'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://canadas100best.com/wp-content/uploads/2020/06/00_BAR_RAVAL_2020.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://canadas100best.com/wp-content/uploads/2016/02/Bar-Raval.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://d1ralsognjng37.cloudfront.net/4fa8527a-b5b6-4899-bc4e-f1bf3e7eca3a.jpeg');
+              },
+              () {
+                changeCoverImage(
+                    'https://nowtoronto.com/wp-content/uploads/2020/05/drink-raval-0305.jpg');
+              },
+            ],
+          ),
+
           CustomTitleTextforRestuarantDetail(
             restuarantName: 'Bar Raval Restaurant',
             priceRating: 4,
@@ -133,15 +165,25 @@ Our bar is staffed by experienced and knowledgeable bartenders who can create an
               SizedBox(
                 height: 16,
               ),
-              Container(
-                width: 275.60,
-                height: 208.21,
-                decoration: BoxDecoration(
-                  color: Color(0xFFC4C4C4),
-                  borderRadius: BorderRadius.circular(26.52),
-                  image: DecorationImage(
-                    image: AssetImage('assets/map sample.png'),
-                    fit: BoxFit.fill,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            MapPage()), // Use onTapRoute for navigation
+                  );
+                },
+                child: Container(
+                  width: 275.60,
+                  height: 208.21,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFC4C4C4),
+                    borderRadius: BorderRadius.circular(26.52),
+                    image: DecorationImage(
+                      image: AssetImage('assets/map sample.png'),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),

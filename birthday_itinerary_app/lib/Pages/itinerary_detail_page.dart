@@ -23,22 +23,80 @@ class _ExplorePageState extends State<ItineraryDetailPage> {
       body: Column(
         children: [
           // Add the Cover Image
-          Container(
-            width: 375,
-            height: 324,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(coverImageUrl),
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              Container(
+                width: 375,
+                height: 324,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(coverImageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                top: 16.0, // Adjust the top offset as needed
+                left: 16.0, // Adjust the left offset as needed
+                child: Container(
+                  width: 50.0, // Diameter of the circle
+                  height: 50.0, // Diameter of the circle
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        Color.fromRGBO(0, 0, 0, 0.5), // Circle background color
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white, // Icon color
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
           // Add the Horizontal Scrollable Row
-          HorizontalImageRow(changeCoverImage),
+          HorizontalImageRow(
+            imageUrls: [
+              'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg',
+              'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg',
+              'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg',
+              'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg',
+              'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg',
+            ],
+            onTapRoutes: [
+              () {
+                changeCoverImage(
+                    'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg');
+              },
+              () {
+                changeCoverImage(
+                    'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg');
+              },
+            ],
+          ),
+
           CustomTitleTextforItineraryDetail(
-            itineraryTitle: 'Culinary Delight Fiesta',
-            itineraryPricePerPerson: 45,
-            itineraryLocation: 'Napa Valley, California',
+            Title: 'Culinary Delights Fiesta',
+            PricePerPerson: 45,
+            Location: 'Napa Valley, California',
+            Rating: 4.4,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -137,7 +195,7 @@ class ExplorePageContent extends StatelessWidget {
                 height: 20,
               ),
               Center(
-                child: BlueButton(buttonTitle: 'Book a Seat'),
+                child: BlueButton(buttonTitle: 'Book a Room'),
               ),
               SizedBox(
                 height: 20,

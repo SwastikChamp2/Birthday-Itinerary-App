@@ -2,14 +2,14 @@ import 'package:birthday_itinerary_app/Pages/map_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
-class HotelDetailPage extends StatefulWidget {
+class EventDetailPage extends StatefulWidget {
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
 
-class _ExplorePageState extends State<HotelDetailPage> {
+class _ExplorePageState extends State<EventDetailPage> {
   String coverImageUrl =
-      'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/af/0d/38/fairmont-san-francisco.jpg?w=700&h=-1&s=1';
+      'https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB';
 
   void changeCoverImage(String newImageUrl) {
     setState(() {
@@ -63,41 +63,41 @@ class _ExplorePageState extends State<HotelDetailPage> {
           // Add the Horizontal Scrollable Row
           HorizontalImageRow(
             imageUrls: [
-              'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/af/0d/38/fairmont-san-francisco.jpg?w=700&h=-1&s=1',
-              'https://media.cntraveler.com/photos/5a67942178741f59690321ec/16:9/w_2560,c_limit/The-Fairmont__2018_Buckingham-Balcony-Suite-Balcony.jpg',
-              'https://media.cntraveler.com/photos/5a6794214580d0380a6531dc/16:9/w_2560%2Cc_limit/The-Fairmont__2018_The-Fairmont-San-Francisco---Lobby---1235811.jpg',
-              'https://cdn.abcotvs.com/dip/images/5688514_localish-LSH1283-FAIRMONTSUITE-KGO-vid.jpg',
-              'https://www.fivestaralliance.com/files/fsa/nodes/2009/10292/10292_0_fairmontsanfrancisco_fsa-g.jpg?dummy=1424395107',
+              'https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB',
+              'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg',
+              'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg',
+              'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg',
+              'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg',
             ],
             onTapRoutes: [
               () {
                 changeCoverImage(
-                    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/af/0d/38/fairmont-san-francisco.jpg?w=700&h=-1&s=1');
+                    'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg');
               },
               () {
                 changeCoverImage(
-                    'https://media.cntraveler.com/photos/5a67942178741f59690321ec/16:9/w_2560,c_limit/The-Fairmont__2018_Buckingham-Balcony-Suite-Balcony.jpg');
+                    'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg');
               },
               () {
                 changeCoverImage(
-                    'https://media.cntraveler.com/photos/5a6794214580d0380a6531dc/16:9/w_2560%2Cc_limit/The-Fairmont__2018_The-Fairmont-San-Francisco---Lobby---1235811.jpg');
+                    'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg');
               },
               () {
                 changeCoverImage(
-                    'https://cdn.abcotvs.com/dip/images/5688514_localish-LSH1283-FAIRMONTSUITE-KGO-vid.jpg');
+                    'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg');
               },
               () {
                 changeCoverImage(
-                    'https://www.fivestaralliance.com/files/fsa/nodes/2009/10292/10292_0_fairmontsanfrancisco_fsa-g.jpg?dummy=1424395107');
+                    'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg');
               },
             ],
           ),
 
           CustomTitleTextforItineraryDetail(
-            Title: 'The Fairmont',
-            PricePerPerson: 300,
-            Rating: 4.7,
-            Location: 'San Francisco, California',
+            Title: 'Mountain Top SKiing ',
+            PricePerPerson: 200,
+            Location: 'Aspen, Colorado',
+            Rating: 4.5,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -134,11 +134,13 @@ class ExplorePageContent extends StatelessWidget {
               Container(
                 width: 331,
                 child: Text(
-                  '''Fairmont Hotels & Resorts is a luxury hotel chain with over 80 hotels and resorts in over 20 countries around the world. Fairmont hotels are known for their iconic locations, elegant accommodations, world-class amenities, and impeccable service.
+                  '''Aspen, Colorado is a world-renowned ski destination, and The Maroon Bells Ski Resort is one of its best. With over 3,000 acres of skiable terrain, stunning scenery, and a vibrant après-ski scene, The Maroon Bells Ski Resort has something to offer everyone.
 
-Since 1907, Fairmont hotels have been welcoming guests to some of the most iconic destinations in the world, including San Francisco, New York, London, Paris, and Dubai. Fairmont hotels are known for their elegant architecture, luxurious accommodations, and world-class amenities.
+The resort offers a variety of terrain for all skill levels, from beginner to advanced. There are also a number of terrain parks and gladed areas for skiers and snowboarders who are looking for a challenge.
 
-From the moment you arrive at a Fairmont hotel, you will be greeted with impeccable service and a warm welcome. Fairmont hotels offer a wide range of amenities to meet the needs of all guests, including award-winning restaurants and bars, state-of-the-art fitness centers and spa facilities, business centers and meeting facilities, concierge services, and more.''',
+One of the things that makes The Maroon Bells Ski Resort so special is its stunning scenery. The resort is located in the White River National Forest, and it offers panoramic views of the surrounding mountains, including the Maroon Bells, two of the most iconic peaks in the Rocky Mountains.
+
+Another thing that makes The Maroon Bells Ski Resort so popular is its vibrant après-ski scene. The resort has a number of bars and restaurants''',
                   style: TextStyle(
                     color: Color(0xFF425884),
                     fontSize: 12,
@@ -193,44 +195,7 @@ From the moment you arrive at a Fairmont hotel, you will be greeted with impecca
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Rooms',
-                  style: TextStyle(
-                    color: Color(0xFF151516),
-                    fontSize: 18.57,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Column(
-                children: [
-                  RoomTableItem(
-                    room: 'Room 101',
-                    description: 'Cozy single room with a view',
-                    price: 80,
-                  ),
-                  RoomTableItem(
-                    room: 'Room 202',
-                    description: 'Spacious double room with balcony',
-                    price: 120,
-                  ),
-                  RoomTableItem(
-                    room: 'Room 303',
-                    description: 'Luxury suite with ocean view',
-                    price: 250,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Facilities and Ammenities',
+                  'Event Details',
                   style: TextStyle(
                     color: Color(0xFF151516),
                     fontSize: 18.57,
@@ -242,21 +207,12 @@ From the moment you arrive at a Fairmont hotel, you will be greeted with impecca
               const SizedBox(
                 height: 25,
               ),
-              ChipList(
-                items: [
-                  'Spa',
-                  'Swimming Pool',
-                  'Indoor Sports',
-                  'Pet Friendly',
-                  'Butler Service',
-                  'Golf Course',
-                ],
-              ),
+              EventDetails(),
               SizedBox(
-                height: 40,
+                height: 20,
               ),
               Center(
-                child: BlueButton(buttonTitle: 'Book a Seat'),
+                child: BlueButton(buttonTitle: 'Book Event'),
               ),
               SizedBox(
                 height: 20,
@@ -264,6 +220,50 @@ From the moment you arrive at a Fairmont hotel, you will be greeted with impecca
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class EventDetails extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          CustomEventDetailCard(
+            individualEventTitle: 'Arrival and Warm-Up',
+            individualEventDate: '8:00 AM - 10:00 AM',
+            individualEventLocation: 'The Maroon Bells Ski Resort Reception',
+            individualEventDescription:
+                'Arrive at Maroon Bells Ski Resort, purchase lift tickets, warm up with a few easy runs, and begin skiing easy slopes ',
+            isIndividualEventActive: false,
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Morning Skiing',
+            individualEventDate: '10:00 AM - 1:00 PM',
+            individualEventLocation: 'The Maroon Bells Ski Resort Area No.3',
+            individualEventDescription:
+                'Take a break for lunch, continue skiing on the intermediate and advanced slopes, and take another break for lunch or a snack.',
+            isIndividualEventActive: false,
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Afternoon Skiing',
+            individualEventDate: '1:00 PM - 4:00 PM',
+            individualEventLocation: 'The Maroon Bells Ski Resort Area No.12',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Ski some of the more challenging slopes, such as Spar Gulch and The Face of Bell, take a final break before heading down the mountain, and ski the last few runs of the day.',
+          ),
+          CustomEventDetailCard(
+            individualEventTitle: 'Post-Skiing Lunch and Eating',
+            individualEventDate: '4:00 PM - 7:00 PM',
+            individualEventLocation: 'The Maroon Bells Ski Resort Restuarant',
+            isIndividualEventActive: false,
+            individualEventDescription:
+                'Enjoy a post-ski drink or meal at our finest restuarant meals specially curated for you.',
+          ),
+        ],
       ),
     );
   }

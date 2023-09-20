@@ -1,4 +1,5 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
+import 'package:birthday_itinerary_app/Pages/event_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/event_list.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class EventTabSection extends StatelessWidget {
                   title: "Mountain Top Skiing",
                   location: "Aspen, Colorado",
                   rating: 4.6,
-                  onTapRoute: EventListPage(),
+                  onTapRoute: EventDetailPage(),
                   imageUrl:
                       "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB",
                 ),
