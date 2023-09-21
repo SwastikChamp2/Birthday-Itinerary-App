@@ -1,7 +1,9 @@
 import 'package:birthday_itinerary_app/Components/birthday_itinerary_card_homepage.dart';
 import 'package:birthday_itinerary_app/Components/general_components.dart';
 import 'package:birthday_itinerary_app/Pages/events_tab_page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/hotels_tab_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_page_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -21,6 +23,32 @@ class _ExplorePageState extends State<ExplorePage>
   String eventTabStyle = 'Grey';
   String tabTitle = 'Restaurant'; // Initialize tabTitle
   int _selectedButtonIndex = 0;
+  int selectedIndex = 1;
+
+  void _handleTabTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+
+    // Add navigation logic here
+    // For example:
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else if (index == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ExplorePage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyItineraryPage()),
+      );
+    }
+  }
 
   void _selectButton(int index) {
     setState(() {
@@ -109,6 +137,8 @@ class _ExplorePageState extends State<ExplorePage>
                       : Widget3(),
             ),
           ),
+          FixedBottomBar(
+              selectedIndex: selectedIndex, onTabTapped: _handleTabTapped),
         ],
       ),
     );

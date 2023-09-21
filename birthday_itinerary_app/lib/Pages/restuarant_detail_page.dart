@@ -1,4 +1,7 @@
+import 'package:birthday_itinerary_app/Pages/explore__page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/map_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
@@ -8,6 +11,7 @@ class RestuarantDetailPage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<RestuarantDetailPage> {
+  int selectedIndex = 1;
   String coverImageUrl =
       'https://media.cntraveler.com/photos/5b22cabaf0cc9956e5adca3c/16:9/w_2560,c_limit/Bar-Raval_36361674480_70a3ef47c9_o.jpg';
 
@@ -15,6 +19,31 @@ class _ExplorePageState extends State<RestuarantDetailPage> {
     setState(() {
       coverImageUrl = newImageUrl;
     });
+  }
+
+  void _handleTabTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+
+    // Add navigation logic here
+    // For example:
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else if (index == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ExplorePage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyItineraryPage()),
+      );
+    }
   }
 
   @override
@@ -104,7 +133,8 @@ class _ExplorePageState extends State<RestuarantDetailPage> {
               child: ExplorePageContent(),
             ),
           ),
-          FixedBottomBar(),
+          FixedBottomBar(
+              selectedIndex: selectedIndex, onTabTapped: _handleTabTapped),
         ],
       ),
     );

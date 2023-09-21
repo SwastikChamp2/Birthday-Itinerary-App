@@ -4,22 +4,14 @@ import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
-class ItineraryDetailPage extends StatefulWidget {
+class EventWalkthroughPage extends StatefulWidget {
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
 
-class _ExplorePageState extends State<ItineraryDetailPage> {
-  int selectedIndex = 0;
-  String coverImageUrl =
-      'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg';
-
-  void changeCoverImage(String newImageUrl) {
-    setState(() {
-      coverImageUrl = newImageUrl;
-    });
-  }
-
+class _ExplorePageState extends State<EventWalkthroughPage> {
+  int selectedIndex = 2;
+  String coverImage = 'assets/map navigation route.jpeg';
   void _handleTabTapped(int index) {
     setState(() {
       selectedIndex = index;
@@ -51,82 +43,64 @@ class _ExplorePageState extends State<ItineraryDetailPage> {
       backgroundColor: const Color.fromRGBO(241, 251, 255, 1),
       body: Column(
         children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              color: Colors.black.withOpacity(0.5),
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white, // Icon color
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        'Event Walkthrough',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
           // Add the Cover Image
           Stack(
             children: [
               Container(
                 width: 375,
-                height: 324,
+                height: 380,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(coverImageUrl),
+                    image: AssetImage(coverImage),
                     fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 16.0, // Adjust the top offset as needed
-                left: 16.0, // Adjust the left offset as needed
-                child: Container(
-                  width: 50.0, // Diameter of the circle
-                  height: 50.0, // Diameter of the circle
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        Color.fromRGBO(0, 0, 0, 0.5), // Circle background color
-                  ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white, // Icon color
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
                   ),
                 ),
               ),
             ],
           ),
           // Add the Horizontal Scrollable Row
-          HorizontalImageRow(
-            imageUrls: [
-              'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg',
-              'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg',
-              'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg',
-              'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg',
-              'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg',
-            ],
-            onTapRoutes: [
-              () {
-                changeCoverImage(
-                    'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg');
-              },
-              () {
-                changeCoverImage(
-                    'https://static.toiimg.com/thumb/msid-77028654,width-400,resizemode-4/77028654.jpg');
-              },
-              () {
-                changeCoverImage(
-                    'https://www.christiesrealestate.com/blog/wp-content/uploads/2021/09/PUBLIC_PopularCantina_0621_LizClayman_149.jpg');
-              },
-              () {
-                changeCoverImage(
-                    'https://media.gqindia.com/wp-content/uploads/2017/12/110.jpg');
-              },
-              () {
-                changeCoverImage(
-                    'https://npr.brightspotcdn.com/legacy/sites/khpr/files/201905/f_top.jpg');
-              },
-            ],
-          ),
 
-          CustomTitleTextforItineraryDetail(
-            Title: 'Culinary Delights Fiesta',
-            PricePerPerson: 45,
-            Location: 'Napa Valley, California',
-            Rating: 4.4,
-          ),
           Expanded(
             child: SingleChildScrollView(
               child: ExplorePageContent(),
@@ -160,25 +134,13 @@ class ExplorePageContent extends StatelessWidget {
             crossAxisAlignment:
                 CrossAxisAlignment.start, // Align text to the left
             children: [
-              Container(
-                width: 331,
-                child: Text(
-                  'Embark on a luxurious culinary journey. Create gourmet masterpieces, savor fine flavors, and delight in interactive dining.',
-                  style: TextStyle(
-                    color: Color(0xFF425884),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
               SizedBox(
                 height: 16,
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Location',
+                  'Locations',
                   style: TextStyle(
                     color: Color(0xFF151516),
                     fontSize: 18.57,
@@ -224,9 +186,6 @@ class ExplorePageContent extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Center(
-                child: BlueButton(buttonTitle: 'Book a Room'),
-              ),
               SizedBox(
                 height: 20,
               ),
@@ -250,7 +209,7 @@ class EventDetails extends StatelessWidget {
             individualEventLocation: 'The Garden Terrace Cafe',
             individualEventDescription:
                 'Indulge in a gourmet morning spread in the Garden Terrace.',
-            isIndividualEventActive: false,
+            isIndividualEventActive: true,
           ),
           CustomEventDetailCard(
             individualEventTitle: 'Welcome Lunch',

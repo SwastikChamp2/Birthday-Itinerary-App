@@ -1,4 +1,7 @@
+import 'package:birthday_itinerary_app/Pages/explore__page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/map_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
@@ -8,6 +11,7 @@ class HotelDetailPage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<HotelDetailPage> {
+  int selectedIndex = 1;
   String coverImageUrl =
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/af/0d/38/fairmont-san-francisco.jpg?w=700&h=-1&s=1';
 
@@ -15,6 +19,31 @@ class _ExplorePageState extends State<HotelDetailPage> {
     setState(() {
       coverImageUrl = newImageUrl;
     });
+  }
+
+  void _handleTabTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+
+    // Add navigation logic here
+    // For example:
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else if (index == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ExplorePage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyItineraryPage()),
+      );
+    }
   }
 
   @override
@@ -104,7 +133,8 @@ class _ExplorePageState extends State<HotelDetailPage> {
               child: ExplorePageContent(),
             ),
           ),
-          FixedBottomBar(),
+          FixedBottomBar(
+              selectedIndex: selectedIndex, onTabTapped: _handleTabTapped),
         ],
       ),
     );
@@ -208,18 +238,18 @@ From the moment you arrive at a Fairmont hotel, you will be greeted with impecca
               Column(
                 children: [
                   RoomTableItem(
-                    room: 'Room 101',
-                    description: 'Cozy single room with a view',
+                    room: 'Single Room',
+                    description: '1 Medium Beds',
                     price: 80,
                   ),
                   RoomTableItem(
-                    room: 'Room 202',
-                    description: 'Spacious double room with balcony',
+                    room: 'Double Room',
+                    description: '2 Medium Beds',
                     price: 120,
                   ),
                   RoomTableItem(
-                    room: 'Room 303',
-                    description: 'Luxury suite with ocean view',
+                    room: 'Deluxe Room',
+                    description: '1 King Size Bed with 2 sofa',
                     price: 250,
                   ),
                 ],

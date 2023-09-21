@@ -1,4 +1,7 @@
+import 'package:birthday_itinerary_app/Pages/explore__page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:birthday_itinerary_app/Pages/map_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:flutter/material.dart';
 import '../Components/general_components.dart';
 
@@ -8,6 +11,7 @@ class EventDetailPage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<EventDetailPage> {
+  int selectedIndex = 1;
   String coverImageUrl =
       'https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2022-23/tickets-and-passes-hero-image-082522.jpg?mw=1506&mh=930&hash=190C09B75EC96992C1ED1AB16C3477FB';
 
@@ -15,6 +19,31 @@ class _ExplorePageState extends State<EventDetailPage> {
     setState(() {
       coverImageUrl = newImageUrl;
     });
+  }
+
+  void _handleTabTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+
+    // Add navigation logic here
+    // For example:
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else if (index == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ExplorePage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyItineraryPage()),
+      );
+    }
   }
 
   @override
@@ -104,7 +133,8 @@ class _ExplorePageState extends State<EventDetailPage> {
               child: ExplorePageContent(),
             ),
           ),
-          FixedBottomBar(),
+          FixedBottomBar(
+              selectedIndex: selectedIndex, onTabTapped: _handleTabTapped),
         ],
       ),
     );

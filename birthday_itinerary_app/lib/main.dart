@@ -1,7 +1,9 @@
 import 'package:birthday_itinerary_app/Authentication/google_signin.dart';
+import 'package:birthday_itinerary_app/Pages/QR_scanner_page.dart';
 import 'package:birthday_itinerary_app/Pages/explore__page.dart';
 import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +29,7 @@ class BirthdayApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
           ),
           debugShowCheckedModeBanner: false,
-          home: ExplorePage(),
+          home: StartingPageContent(),
         ),
       );
 }

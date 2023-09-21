@@ -1,20 +1,23 @@
 import 'package:birthday_itinerary_app/Components/birthday_itinerary_card_homepage.dart';
 import 'package:birthday_itinerary_app/Components/general_components.dart';
+import 'package:birthday_itinerary_app/Pages/QR_scanner_page.dart';
+import 'package:birthday_itinerary_app/Pages/event_walkthrough_page.dart';
 import 'package:birthday_itinerary_app/Pages/explore__page.dart';
-import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
-import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
+import 'package:birthday_itinerary_app/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import '../Authentication/google_signin.dart';
 
-class HomePage extends StatefulWidget {
+class MyItineraryPage extends StatefulWidget {
+  const MyItineraryPage({super.key});
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MyItineraryPage> createState() => _MyItineraryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
+class _MyItineraryPageState extends State<MyItineraryPage> {
+  int selectedIndex = 2;
   void _handleTabTapped(int index) {
     setState(() {
       selectedIndex = index;
@@ -49,7 +52,7 @@ class _HomePageState extends State<HomePage> {
           FixedTopBarforHome(),
           Expanded(
             child: SingleChildScrollView(
-              child: HomePageContent(),
+              child: MyItineraryPageContent(),
             ),
           ),
           FixedBottomBar(
@@ -61,6 +64,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 class FixedTopBarforHome extends StatelessWidget {
+  const FixedTopBarforHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -91,7 +96,7 @@ class FixedTopBarforHome extends StatelessWidget {
           SizedBox(width: 20),
           Expanded(
             child: Text(
-              'Choose a birthday itinerary',
+              'My Itinerary',
               style: TextStyle(
                 color: Color(0xFF5E6980),
                 fontSize: 18,
@@ -106,76 +111,71 @@ class FixedTopBarforHome extends StatelessWidget {
   }
 }
 
-class HomePageContent extends StatelessWidget {
-  GoogleSignInAccount? _user;
+class MyItineraryPageContent extends StatelessWidget {
+  MyItineraryPageContent({super.key});
 
-  GoogleSignInAccount get user => _user!;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 17,
-      top: 101,
-      child: Container(
-        // width: 341,
-        // height: 1151,
-        clipBehavior: Clip.antiAlias,
-        decoration: const BoxDecoration(),
-        child: Column(
-          children: [
-            BirthdayItineraryCard(
-              title: 'Enchanted Garden Party',
-              price: '\$70',
-              rating: '4.6',
-              onTapRoute: ItineraryDetailPage(),
-              imageUrl:
-                  'https://www.feelgoodevents.com.au/wp-content/uploads/2022/06/DSC01422-scaled.jpg',
+    return Container(
+      // width: 341,
+      // height: 1151,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(),
+      child: Column(
+        children: [
+          MyItineraryCard(
+            title: 'Culinary Delight',
+            time: '8:00 AM - 8:00 PM ',
+            location: 'Napa Valley, California',
+            date: '24/09/23',
+            onTapRoute: EventWalkthroughPage(),
+            imageUrl:
+                'https://mumbaimirror.indiatimes.com/thumb/msid-79228089,width-1200,height-900,resizemode-4/.jpg',
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Align(
+            alignment: AlignmentDirectional.center,
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 100,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QRScannerScreen()),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.qr_code_scanner,
+                        color: Colors.grey,
+                        size: 100,
+                      )),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'Scan to join',
+                  style: TextStyle(
+                    color: Color(0xFF666666),
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            BirthdayItineraryCard(
-              title: 'Adventure Delight',
-              price: '\$80',
-              rating: '4.4',
-              onTapRoute: ItineraryDetailPage(),
-              imageUrl:
-                  'https://upload.wikimedia.org/wikipedia/commons/a/ab/Whitewater_Rafting_-_geograph.org.uk_-_1530594.jpg?20110303081056',
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            BirthdayItineraryCard(
-              title: 'Culinary Fiest Delight',
-              price: '\$90',
-              rating: '4.5',
-              onTapRoute: ItineraryDetailPage(),
-              imageUrl:
-                  'https://mumbaimirror.indiatimes.com/thumb/79228089.cms?resizemode=4&width=400',
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            BirthdayItineraryCard(
-              title: 'Pamper & Paint Retreat',
-              price: '\$70',
-              rating: '4.6',
-              onTapRoute: ItineraryDetailPage(),
-              imageUrl:
-                  'https://img.etimg.com/thumb/msid-62296874,width-650,height-488,imgsize-221288,,resizemode-75/.jpg',
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final provider =
-                    Provider.of<GoogleSignInProvider>(context, listen: false);
-                provider.googleLogout(); // Log out
-              },
-              child: const Text("Log Out"),
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+        ],
       ),
     );
   }

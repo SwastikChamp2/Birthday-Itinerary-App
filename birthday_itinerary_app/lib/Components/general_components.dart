@@ -1,12 +1,14 @@
 import 'package:birthday_itinerary_app/Pages/explore__page.dart';
 import 'package:birthday_itinerary_app/Pages/itinerary_detail_page.dart';
 import 'package:birthday_itinerary_app/Pages/home_page.dart';
+import 'package:birthday_itinerary_app/Pages/my_itinerary_page.dart';
 import 'package:birthday_itinerary_app/Pages/payment_page.dart';
 import 'package:birthday_itinerary_app/Pages/testpage.dart';
 import 'package:flutter/material.dart';
 import 'package:birthday_itinerary_app/Pages/restuarant_list.dart';
 
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 Widget buildPriceRating(double ratingValue) {
   final int fullDollars = ratingValue.floor();
@@ -118,85 +120,123 @@ class StarRatingChip extends StatelessWidget {
   }
 }
 
-class FixedBottomBar extends StatelessWidget {
+class FixedBottomBar extends StatefulWidget {
+  late final int selectedIndex;
+  final Function(int) onTabTapped;
+
+  FixedBottomBar({required this.selectedIndex, required this.onTabTapped});
+
+  @override
+  State<FixedBottomBar> createState() => _FixedBottomBarState();
+}
+
+class _FixedBottomBarState extends State<FixedBottomBar> {
+  int selectedIndex = 0; // Index of the selected icon
+
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      top: 739,
+    return Container(
+      width: 375,
+      height: 45,
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Container(
+              width: 375,
+              height: 73,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x14000000),
+                    blurRadius: 14,
+                    offset: Offset(0, -2),
+                    spreadRadius: 0,
+                  )
+                ],
+              ),
+            ),
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildIconButton(
+                    index: 0,
+                    icon: MdiIcons.home,
+                    tooltip: 'Home',
+                  ),
+                  const SizedBox(width: 80),
+                  _buildIconButton(
+                    index: 1,
+                    icon: MdiIcons.compass,
+                    tooltip: 'Explore',
+                  ),
+                  const SizedBox(width: 80),
+                  _buildIconButton(
+                    index: 2,
+                    icon: MdiIcons.viewList,
+                    tooltip: 'My Itinerary',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconButton({
+    required int index,
+    required IconData icon,
+    required String tooltip,
+  }) {
+    bool isSelected = index == widget.selectedIndex;
+
+    return GestureDetector(
+      onTap: () {
+        widget.onTabTapped(index); // Update the selected index
+
+        // Add your onPressed action here
+        // For example, you can navigate to the corresponding screen
+        if (index == 0) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        } else if (index == 1) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => ExplorePage()),
+          );
+        } else if (index == 2) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => MyItineraryPage()),
+          );
+        }
+      },
       child: Container(
-        width: 375,
-        height: 45,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 375,
-                height: 73,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x14000000),
-                      blurRadius: 14,
-                      offset: Offset(0, -2),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 50,
-              top: 10,
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      },
-                      child: Image.asset(
-                        'assets/home page button selected.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                    ),
-                    const SizedBox(width: 80),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigation route to HomePage
-                      },
-                      child: Image.asset(
-                        'assets/explore page button.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                    ),
-                    const SizedBox(width: 80),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigation route to itinerary event page
-                      },
-                      child: Image.asset(
-                        'assets/itinerary page button.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          gradient: isSelected
+              ? LinearGradient(
+                  begin: Alignment(-0.98, -0.22),
+                  end: Alignment(0.98, 0.22),
+                  colors: [Color(0xFF8BD8F9), Color(0xFF5395FF)],
+                )
+              : null,
+        ),
+        child: Icon(
+          icon,
+          size: 30,
+          color: isSelected ? Colors.white : Color(0xFF666666),
         ),
       ),
     );
@@ -570,14 +610,14 @@ class ExplorePagePopularCard extends StatelessWidget {
   final String location;
   final double rating;
   final String imageUrl;
-  final Widget onTapRoute; // Add this parameter for navigation
+  final Widget onTapRoute;
 
   ExplorePagePopularCard({
     required this.title,
     required this.location,
     required this.rating,
     required this.imageUrl,
-    required this.onTapRoute, // Initialize onTapRoute when calling the instance
+    required this.onTapRoute,
   });
 
   @override
@@ -586,9 +626,7 @@ class ExplorePagePopularCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  onTapRoute), // Use onTapRoute for navigation
+          MaterialPageRoute(builder: (context) => onTapRoute),
         );
       },
       child: Card(
@@ -785,6 +823,7 @@ class _SearchFieldState extends State<SearchField> {
   }
 }
 
+//HERE HERE
 class ExploreCategoryCard extends StatelessWidget {
   final String imageUrl;
   final String labelText;
@@ -1369,6 +1408,143 @@ class RoomTableItem extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MyItineraryCard extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String time;
+  final String date;
+  final String location;
+  final Widget onTapRoute; // Callback function
+
+  MyItineraryCard({
+    required this.imageUrl,
+    required this.title,
+    required this.time,
+    required this.date,
+    required this.location,
+    required this.onTapRoute,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  onTapRoute), // Use onTapRoute for navigation
+        );
+      },
+      child: Card(
+        color: Color.fromARGB(255, 255, 255, 255),
+        elevation: 4, // Adjust the elevation as needed
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Container(
+            width: 300,
+            child: Row(
+              children: [
+                Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFC4C4C4),
+                    borderRadius: BorderRadius.circular(8),
+                    // Replace imageUrl with your image URL
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          color: Color(0xFF3D3F44),
+                          fontSize: 11.78,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time,
+                              color: Color(0xFF15A8E7), size: 16),
+                          SizedBox(width: 8),
+                          Text(
+                            time,
+                            style: TextStyle(
+                              color: Color(0xFF191919),
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_today,
+                              color: Color(0xFF15A8E7), size: 16),
+                          SizedBox(width: 8),
+                          Text(
+                            date,
+                            style: TextStyle(
+                              color: Color(0xFF191919),
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_pin,
+                              color: Color(0xFF15A8E7), size: 16),
+                          SizedBox(width: 8),
+                          Container(
+                            width: 150,
+                            child: Text(
+                              location,
+                              style: TextStyle(
+                                color: Color(0xFF191919),
+                                fontSize: 12,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
